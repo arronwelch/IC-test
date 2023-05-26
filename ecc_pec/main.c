@@ -80,16 +80,16 @@ int main()
 	unsigned char data[6] = {0}; // 48-bit data
 
 // calculate 48'{16'h[data] + 8'h[ecc]} + 16'h[ecc]
-//	printf("Please enter source data(16bit) of ecc:\n");
-//	scanf("%x", &input);
-//	ecc = ECC_calc(input);
-//	printf("ECC(16'h%#x) = 6'h%#x\n", input, ecc);
-//
-//	// MTP is 22bit = data(16bit) + ecc(6bit)
-//	data[0] =  input       & 0xFF;	// 8bit
-//	data[1] = (input >> 8) & 0xFF;	// 8bit
-//	data[2] =  ecc;			// 6bit
-//	printf("PEC(22'h%#x%x) = 16'h%#x\n", ecc, input, 0xFFFF & LTC_pec15_calc(6, data));
+	printf("Please enter source data(16bit) of ecc:\n");
+	scanf("%x", &input);
+	ecc = ECC_calc(input);
+	printf("ECC(16'h%#x) = 6'h%#x\n", input, ecc);
+
+	// MTP is 22bit = data(16bit) + ecc(6bit)
+	data[0] =  input       & 0xFF;	// 8bit
+	data[1] = (input >> 8) & 0xFF;	// 8bit
+	data[2] =  ecc;			// 6bit
+	printf("PEC(22'h%#x%x) = 16'h%#x\n", ecc, input, 0xFFFF & LTC_pec15_calc(6, data));
 
 	// calculate 16'CMD(Big-endian,MSB) + 16'PEC(MSB) + 48'DATA(Little-endian,MSB) + 16'PEC(MSB)
 	printf("16'CMD(Big-endian,MSB) + 16'PEC(MSB) + 48'DATA(Little-endian,MSB) + 16'PEC(MSB)\n");

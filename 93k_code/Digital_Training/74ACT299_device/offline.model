@@ -1,0 +1,146 @@
+
+# model file
+
+GLOBAL
+   utility_lines = 256, type=sequencer_controlled, pogo_size=32
+   testhead = TH_4CC                          # TH_2CC | TH_4CC | TH_8CC
+   dut_interface = SOC_8GROUP                 # SOC_4GROUP | SOC_8GROUP | HSM
+#  hpib_interface = sicl/hpib
+   hpib_interface = vxi11/e5810a/192.168.0.101/gpib0
+   timing_bundle = w256-d8-r8
+#  ppu_device = /dev/ttyS0
+#  operator_console = 192.168.0.101
+   multiport = ON
+#  memory_stacker = ON
+#  noise_figure = ON
+   xpressdata = ON
+   device_maintenance = ON
+   multisite = ON
+   apg_speed = 800 Mbps
+#  pogo_cabling = pogomapping_4CC_10XRF
+#  memorytest = ON
+#  psrf_pa_library = ON
+#  psrf_4xFE = ON
+#  triage = ON
+   s&s_value_package = ON
+
+POGOCABLING
+# CSS: list of pogoblocks
+  101: pogoblocks ="319"
+  102: pogoblocks ="321"
+  103: pogoblocks ="324"
+  104: pogoblocks ="323"
+  107: pogoblocks ="117,118,119,120,121,122,123,124"
+# 108: pogoblocks ="125,126,127,128,129,130,131,132"
+  109: pogoblocks ="3"
+  110: pogoblocks ="320"
+  112: pogoblocks ="301,302,305,306"
+  114: pogoblocks ="101,102,103,104,105,106,107,108"
+# 115: pogoblocks ="201,202,203,204,205,206,207,208"
+  118: pogoblocks ="1"
+  204: pogoblocks ="225,425,229,429,303,304,307,308"
+  205: pogoblocks ="109,110,111,112,113,114,115,116"
+  209: pogoblocks ="2"
+# 210: pogoblocks ="229, 429"
+  213: pogoblocks ="230"
+# 214: pogoblocks ="217,218,219,220,221,222,223,224"
+  216: pogoblocks ="231"
+  218: pogoblocks ="8"
+
+# FOR MAINTENANCE training - if PS800 is required
+#  201: pogoblocks ="209,210"
+#  202: pogoblocks ="211,212"
+
+IOCHANNEL
+# Pin Scale System
+
+    10101-12416:HW = PS1600, speed =  1600 Mbps, smem = 112M, tmu, diff, loopback = 1600Mbps
+      
+#   10101-13216:HW = E8030,  speed =  1600 Mbps, smem = 112M,      diff, loopback = 1600Mbps
+#   20101-22416:HW = E8030,  speed =  1600 Mbps, smem = 112M,      diff, loopback = 1600Mbps
+#   40901-41616:HW = E8030,  speed =  1600 Mbps, smem = 112M,      diff, loopback = 1600Mbps
+
+#   30101-30216:HW = PS9G,   speed =  9000 Mbps, smem = 112M, tmu, diff, loopback = 9000Mbps
+#   30501-30616:HW = PS9G,   speed =  9000 Mbps, smem = 112M, tmu, diff, loopback = 9000Mbps
+
+   
+# FOR MAINTENANCE training - if PS800 is required  
+#  20901-21016:HW = PS800, speed = 800 Mbps, smem = 64M
+#  21101-21216:HW = PS800, speed = 660 Mbps, smem = 32M
+     
+
+ANALOGBOARD
+   231: type = MCB
+   
+
+# RF FE24 configuration
+
+
+  324: type = RFI, config = "ID=1;D1=23137;D2=23139;S1=31901;S2=32101;S4=32001", core=1
+  323: type = RFI, config = "ID=2;D1=23138;D2=23140;S1=31902;S2=32102;S4=32002", core=1
+  319: type = RFF, config = "I=23133;Q=23135", core=1
+  321: type = RFF, config = "I=23134;Q=23136", core=1
+  320: type = RFF, core=1
+
+#  324: type = RFI, config = "ID=1;D1=23137;D2=23139;S1=31901;S2=31801;S4=32101", core=1
+#  323: type = RFI, config = "ID=2;D1=23138;D2=23140;S1=31902;S2=31802;S4=32102", core=1
+#  319: type = RFF, config = "I=23133;Q=23135", core=1
+#  318: type = RFF, config = "I=23134;Q=23136", core=1
+#  321: type = RFF, core=1
+#  322: type = RFF, core=1
+
+
+BOARDCONF
+# 2231-2234: type = MCA, mtype = SRCA
+# 2235-2238: type = MCA, mtype = MESA
+
+# 2201-2204: type = MCC, mtype = MESC
+
+# RF configuration
+ 2311-2314: type = MCB, mtype = SRCB, speed = 500Msps
+ 2315-2318: type = MCB, mtype = MESB
+
+
+INTERFACE_SECTION
+  SOCGPIB : iftype=GPIB, addr="vxi11/e5810a/192.168.0.101/gpib0"
+
+ETC
+#  NFSSERVER : ipaddr=192.168.0.1
+#  CALIBRATION : pps_cal_mode = PPS_EXD_CAL
+#  ACPOWER   : FREQ = 50
+#  REFERENCECLOCK : input = INTERNAL
+
+
+DPS
+
+  1-3: type = MSDPS, channels = 8
+    8: type = MSDPS, channels = 8
+   
+#  22901-22916: type = DCS-DPS32
+#  42901-42916: type = DCS-DPS32
+
+   22501-22516: type = DCS-DPS128HC
+   42501-42516: type = DCS-DPS128HC
+   22901-22916: type = DCS-DPS128HC
+   42901-42916: type = DCS-DPS128HC
+   30301-30316: type = DCS-DPS128HC
+   30401-30416: type = DCS-DPS128HC
+   30701-30716: type = DCS-DPS128HC
+   30801-30816: type = DCS-DPS128HC
+   
+   23001-23004: type = DCS-UHC4
+   
+#  2-3: type = HVDPS
+#  4: type = HCDPS
+#  5: type = XCPS
+#  4: type = HP6624A, address = 10
+#  5: type = MSDPS
+#  6: type = MSDPS, channels = 4
+#  7: type = MSDPS, channels = 8
+ 
+
+
+###################################################################################################
+
+
+
