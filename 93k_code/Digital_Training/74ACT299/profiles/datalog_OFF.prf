@@ -1,0 +1,3 @@
+* . * . * . log_events_enable = 1
+* . * . * . datalog_level = 0
+* . * . * . datalog_detail = 0

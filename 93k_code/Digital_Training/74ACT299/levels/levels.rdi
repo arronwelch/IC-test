@@ -1,0 +1,45 @@
+hp93000,level,0.1
+PSLV 1,0,0.2,HIZ_R,0,(Vcc)
+PSLR 1,7,1,ON,NORM,(Vcc)
+PSFI 1,OFF,OFF,(Vcc)
+DRLV 1,2250,2500,(CP,DS7,DS0,S1,S0,_MR,I_O7,I_O6,I_O5,I_O4,I_O3,I_O2,I_O1,I_O0,AWG)
+RCLV 1,2250,2500,(Q7,Q0,I_O7,I_O6,I_O5,I_O4,I_O3,I_O2,I_O1,I_O0,DGT)
+TERM 1,OFF,,,,,,(CP,DS7,DS0,S1,S0,_MR,Q7,Q0,I_O7,I_O6,I_O5,I_O4,I_O3,I_O2,I_O1,I_O0,AWG,DGT)
+CLMP 1,OFF,-2000,7000,(CP,DS7,DS0,S1,S0,_MR,Q7,Q0,I_O7,I_O6,I_O5,I_O4,I_O3,I_O2,I_O1,I_O0,AWG,DGT)
+LSUX 1
+EQSP LEV,EQN,#9000000312EQNSET 1 "NonSpecs"
+
+	DPSPINS Vcc
+		vout = 4.5
+		vout_frc_rng = 7
+		iout_clamp_rng = 200
+		ilimit = 200
+		t_ms = 4
+		offcurr = act
+
+	LEVELSET 1 "nominal"
+		PINS ctrl ser_in AWG
+			vil = 0
+			vih = 4.3
+		PINS ser_out DGT
+			vol = 2.4
+			voh = 2.6
+		PINS io_pins
+			vil = 0
+			vih = 4.3
+			vol = 2.4
+			voh = 2.6
+@
+EQSP LEV,SPS,#9000000132
+
+
+EQNSET 1 "NonSpecs"
+
+
+
+SPECSET 1 "no_specs"
+
+
+# SPECNAME       *****ACTUAL***** *****MINIMUM**** *****MAXIMUM**** UNITS COMMENT
+@
+NOOP "7.5.4",,,
