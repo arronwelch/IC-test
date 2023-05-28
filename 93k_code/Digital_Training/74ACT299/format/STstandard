@@ -1,0 +1,11 @@
+    format definition file
+$show_free_res_col=n
+$show_wf_numbers=n
+$show_prev_next_dc=n
+$show_same_dc_for_all_pins=n
+$global_DC_names=,,
+CP,p,1,1,0
+_MR,p,,0,
+mode,g,,SBC_0,
+ser_in,g,,1,
+io_in,g,,1,

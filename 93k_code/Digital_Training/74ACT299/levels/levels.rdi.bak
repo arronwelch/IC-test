@@ -7,7 +7,7 @@ RCLV 1,2250,2500,(Q7,Q0,I_O7,I_O6,I_O5,I_O4,I_O3,I_O2,I_O1,I_O0,DGT)
 TERM 1,OFF,,,,,,(CP,DS7,DS0,S1,S0,_MR,Q7,Q0,I_O7,I_O6,I_O5,I_O4,I_O3,I_O2,I_O1,I_O0,AWG,DGT)
 CLMP 1,OFF,-2000,7000,(CP,DS7,DS0,S1,S0,_MR,Q7,Q0,I_O7,I_O6,I_O5,I_O4,I_O3,I_O2,I_O1,I_O0,AWG,DGT)
 LSUX 1
-EQSP LEV,EQN,#9000000312EQNSET 1 "NonSpecs"
+EQSP LEV,EQN,#9000001826EQNSET 1 "NonSpecs"
 
 	DPSPINS Vcc
 		vout = 4.5
@@ -29,8 +29,74 @@ EQSP LEV,EQN,#9000000312EQNSET 1 "NonSpecs"
 			vih = 4.3
 			vol = 2.4
 			voh = 2.6
+
+EQNSET 2 "specs"
+
+	SPECS
+		VCC [V] # supply voltage
+		VIL [V] # low level input voltage
+		VIH [V] # high level input voltage
+		VOL [V] # low level output voltage
+		VOH [V] # high level output voltage
+
+	DPSPINS Vcc
+		vout = VCC
+		vout_frc_rng = 7
+		iout_clamp_rng = 200
+		ilimit = 200 # Connect Current Limit ilimit(mA) : Prevents destruction of the DUT
+		t_ms = 4 # Setup time
+		offcurr = act # Disconnect State: offcurr = min # High impedance
+										# offcurr = act # Drive 0V up to ilimit. This mode
+														# discharges DUT board caps.
+										# offcurr = open # Output relay off
+	LEVELSET 1 "no termination"
+		PINS ctrl ser_in AWG
+			vil = VIL
+			vih = VIH
+		PINS ser_out DGT
+			vol = VOL
+			voh = VOH
+		PINS io_pins
+			vil = VIL
+			vih = VIH
+			vol = VOL
+			voh = VOH
+
+	LEVELSET 2 "with termination"
+		PINS ctrl ser_in AWG
+			vil = VIL
+			vih = VIH
+		PINS ser_out DGT
+			vol = VOL
+			voh = VOH
+			vt  = (VOH + VOL) / 2 # V; enable termination, define level
+		PINS io_pins
+			vil = VIL
+			vih = VIH
+			vol = VOL
+			voh = VOH
+			vt  = (VOH + VOL) / 2 # V
+
+	LEVELSET 3 "with active load"
+		PINS ctrl ser_in AWG
+			vil = VIL
+			vih = VIH
+		PINS ser_out DGT
+			vol = VOL
+			voh = VOH
+			vt  = (VOH + VOL) / 2 # V
+			iol = 24 # mA; enable active load, define load current for low output level
+			ioh = 24 # mA; enable active load, define load current for high output level
+		PINS io_pins
+			vil = VIL
+			vih = VIH
+			vol = VOL
+			voh = VOH
+			vt  = (VOH + VOL) / 2 # V
+			iol = 24 # mA
+			ioh = 24 # mA
 @
-EQSP LEV,SPS,#9000000132
+EQSP LEV,SPS,#9000001608
 
 
 EQNSET 1 "NonSpecs"
@@ -41,5 +107,43 @@ SPECSET 1 "no_specs"
 
 
 # SPECNAME       *****ACTUAL***** *****MINIMUM**** *****MAXIMUM**** UNITS COMMENT
+
+EQNSET 2 "specs"
+
+
+
+SPECSET 1 "Vcc = 4.5 V"
+
+
+# SPECNAME       *****ACTUAL***** *****MINIMUM**** *****MAXIMUM**** UNITS COMMENT
+VCC              4.5                                                [  V] 
+VIL              0                                                  [  V] 
+VIH              4                                                  [  V] 
+VOL              2.2                                                [  V] 
+VOH              2.3                                                [  V] 
+
+
+
+SPECSET 2 "Vcc = 4.2 V"
+
+
+# SPECNAME       *****ACTUAL***** *****MINIMUM**** *****MAXIMUM**** UNITS COMMENT
+VCC              4.2                                                [  V] 
+VIL              0                                                  [  V] 
+VIH              4                                                  [  V] 
+VOL              2.4                                                [  V] 
+VOH              2.6                                                [  V] 
+
+
+
+SPECSET 3 "Vcc = 4.3 V"
+
+
+# SPECNAME       *****ACTUAL***** *****MINIMUM**** *****MAXIMUM**** UNITS COMMENT
+VCC              4.3                                                [  V] 
+VIL              0                                                  [  V] 
+VIH              4                                                  [  V] 
+VOL              2.7                                                [  V] 
+VOH              2.8                                                [  V] 
 @
 NOOP "7.5.4",,,
