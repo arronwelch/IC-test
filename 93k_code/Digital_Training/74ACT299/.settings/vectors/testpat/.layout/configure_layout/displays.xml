@@ -1,0 +1,11 @@
+<?xml version ='1.0' encoding ='UTF-8'?>
+<displays xmlns:xsi ='http://www.w3.org/2001/XMLSchema-instance'>
+ <signal name ='I_O0 (DVC)' index ='false'/>
+ <signal name ='I_O1 (DVC)' index ='false'/>
+ <signal name ='I_O2 (DVC)' index ='false'/>
+ <signal name ='I_O3 (DVC)' index ='false'/>
+ <signal name ='I_O4 (DVC)' index ='false'/>
+ <signal name ='I_O5 (DVC)' index ='false'/>
+ <signal name ='I_O6 (DVC)' index ='false'/>
+ <signal name ='I_O7 (DVC)' index ='false'/>
+</displays>

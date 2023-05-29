@@ -9,5 +9,5 @@ $viewing_wfset=201 2 1
 $viewing_tset=1
 $screen_size=1
 $show_mode=1
-$cycle_info=1 0 0
+$cycle_info=2 0 1
 $port_shown=@

@@ -5,7 +5,7 @@ BWDS 1,,,"",(CP,DS7,DS0,S1,S0,_MR,I_O7,I_O6,I_O5,I_O4,I_O3,I_O2,I_O1,I_O0)
 ETDS 1,1,,"",(CP,DS7,DS0,S1,S0,_MR,Q7,Q0,I_O7,I_O6,I_O5,I_O4,I_O3,I_O2,I_O1,I_O0)
 DCDT 1,""
 TSUX 1,1
-EQSP TIM,WVT,#9000000873WAVETBL gross_func_wtb
+EQSP TIM,WVT,#9000000850WAVETBL gross_func_wtb
 
 	PINS CP
 		0	"d1:0 d2:0" 0
@@ -18,18 +18,17 @@ EQSP TIM,WVT,#9000000873WAVETBL gross_func_wtb
 		brk ""
 
 	PINS ser_out
-		0	"r1:L"		L
-		1	"r2:H"		H
-		2	"r2:X"		X
+		0	"r1:L"	L
+		1	"r1:H"	H
 
 	PINS mode ser_in
-		0	"d1:0"		0
-		1	"d1:1"		1
+		0	"d1:0"	0
+		1	"d1:1"	1
 		brk ""
 
 	PINS io_pins
-		0	"d1:1 r1:X"	0
-		1	"d1:0 r1:X"	1
+		0	"d1:0 r1:X" 0
+		1	"d1:1 r1:X" 1
 		2	"d1:Z r1:L" L
 		3	"d1:Z r1:H" H
 		4	"d1:Z r1:X" X
@@ -38,16 +37,16 @@ EQSP TIM,WVT,#9000000873WAVETBL gross_func_wtb
 WAVETBL spec_search_wtb
 
 	PINS CP
-		0	"d1:0 d2:0" 0
+		0	"d1:0 d2:0"	0
 		1	"d1:1 d2:0" 1
 		brk ""
 
 	PINS mode
 		0	"d1:1 d2:0 d3:1"	SBC_0
 		1	"d1:0 d2:1 d3:0"	SBC_1
-		2 	"d1:0"				DNRZ_0
+		2	"d1:0"				DNRZ_0
 		3	"d1:1"				DNRZ_1
-		brk "d1:0"
+		brk ""
 
 	PINS ser_out
 		0	"r1:L"	L
@@ -72,11 +71,11 @@ WAVETBL spec_search_wtb
 		4	"d1:Z r1:X" 		X
 		brk ""
 @
-EQSP TIM,EQN,#9000001632EQNSET 1 "gross_func_eqn"
-						# Simple equation setup to be used with the "gross_func"
-						# wavetable. No spec variables and no equations are
-						# used. All I/O pin resources are directly programmed
-						# with fixed values.
+EQSP TIM,EQN,#9000001609EQNSET 1 "gross_func_eqn"
+	# Simple equation setup to be used with the "gross_func"
+	# wabetable. No spec variables and no equations are
+	# used. All I/O pin resources are directly programmed
+	# with fixed values.
 
 	TIMINGSET 1 "20MHz" # Period and edge delays for a 20MHz test
 
@@ -101,7 +100,7 @@ EQSP TIM,EQN,#9000001632EQNSET 1 "gross_func_eqn"
 			d1 = 2
 			r1 = 45
 
-	TIMINGSET 2 "50MHz" # Period and edge delays for a 50 MHz test
+	TIMINGSET 2 "50MHz" # Period and edge delays for a 50MHz test
 
 		period = 20
 
@@ -135,7 +134,7 @@ EQNSET 2 "spec_search_eqn"
 		ts_Sx_CP	[ns]
 		th_CP_Sx	[ns]
 		ts_IOx_CP	[ns]
-		th_CP_IOX	[ns]
+		th_CP_IOx	[ns]
 		ts_DSx_CP	[ns]
 		th_CP_DSx	[ns]
 		tw_CP		[ns]
@@ -162,9 +161,9 @@ EQNSET 2 "spec_search_eqn"
 			d2 = CP_ref - trec_MR_CP
 
 		PINS mode
-			d1 = CP_ref - tx_Sx_CP - ComplDelay
-			d2 = CP_ref - tx_Sx_CP
-			d3 = CP_ref + th_CP_DSx
+			d1 = CP_ref - ts_Sx_CP - ComplDelay
+			d2 = CP_ref - ts_Sx_CP
+			d3 = CP_ref + th_CP_Sx
 
 		PINS ser_in
 			d1 = CP_ref - ts_DSx_CP - ComplDelay
@@ -172,7 +171,6 @@ EQNSET 2 "spec_search_eqn"
 			d3 = CP_ref + th_CP_DSx
 
 		PINS ser_out
-
 			r1 = CP_ref + tpd_CP_Qx
 
 		PINS io_pins
@@ -199,7 +197,7 @@ f                50                                                 [MHz]
 ts_Sx_CP         4                3                10               [ ns] 
 th_CP_Sx         1                -4               2                [ ns] 
 ts_IOx_CP        4                1.5              5                [ ns] 
-th_CP_IOX        1.2              -1               2                [ ns] 
+th_CP_IOx        1.2              -1               2                [ ns] 
 ts_DSx_CP        4.5              1.5              6                [ ns] 
 th_CP_DSx        1.5              -2               2                [ ns] 
 tw_CP            4                0                5                [ ns] 
@@ -218,16 +216,16 @@ SPECSET 2 "spec_search_5MHz"
 
 # SPECNAME       *****ACTUAL***** *****MINIMUM**** *****MAXIMUM**** UNITS COMMENT
 f                5                                                  [MHz] 
-ts_Sx_CP         20               00               30               [ ns] 
-th_CP_Sx         20               00               30               [ ns] 
-ts_IOx_CP        20               00               30               [ ns] 
-th_CP_IOX        20               00               30               [ ns] 
-ts_DSx_CP        20               00               30               [ ns] 
+ts_Sx_CP         20               0                30               [ ns] 
+th_CP_Sx         20               0                30               [ ns] 
+ts_IOx_CP        20               0                30               [ ns] 
+th_CP_IOx        20               0                30               [ ns] 
+ts_DSx_CP        20               0                30               [ ns] 
 th_CP_DSx        1.5              -2               2                [ ns] 
-tw_CP            100              000              110              [ ns] 
-tw_MR            40               00               110              [ ns] 
-trec_MR_CP       30               00               40               [ ns] 
-tpd_CP_Qx        20               00               30               [ ns] 
+tw_CP            100              0                110              [ ns] 
+tw_MR            40               0                110              [ ns] 
+trec_MR_CP       30               0                40               [ ns] 
+tpd_CP_Qx        20               0                30               [ ns] 
 tpd_CP_IOx       15               0                30               [ ns] 
 
 EQNSET 1 "gross_func_eqn"
@@ -242,4 +240,13 @@ SPECSET 1 "gross_func_specs"
 
 # SPECNAME       *****ACTUAL***** *****MINIMUM**** *****MAXIMUM**** UNITS COMMENT
 @
+PCLK 201,1,21,(@)
+CLKR 201,21,7
+ETDS 201,1,,"d1:10 d2:14",(CP)
+ETDS 201,1,,"d1:0.5 d2:5.5 d3:11.5",(DS7,DS0)
+ETDS 201,1,,"d1:1 d2:6 d3:11",(S1,S0)
+ETDS 201,1,,"d1:3.5 d2:7.1",(_MR)
+ETDS 201,1,,"r1:19",(Q7,Q0)
+ETDS 201,1,,"d1:1 d2:6 d3:11.2 r1:19",(I_O7,I_O6,I_O5,I_O4,I_O3,I_O2,I_O1,I_O0)
+ETDS 201,1,,"",(Vcc)
 NOOP "7.5.4",,,

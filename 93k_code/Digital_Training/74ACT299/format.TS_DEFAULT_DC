@@ -2,8 +2,8 @@
 $show_free_res_col=n
 $show_wf_numbers=n
 $show_prev_next_dc=n
-$show_same_dc_for_all_pins=y
-$global_DC_names=,0,
+$show_same_dc_for_all_pins=n
+$global_DC_names=,,
 AWG,p,,,
 CP,p,,,
 DS7,p,,,
