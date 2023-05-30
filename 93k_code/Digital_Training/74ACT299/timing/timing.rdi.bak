@@ -240,13 +240,4 @@ SPECSET 1 "gross_func_specs"
 
 # SPECNAME       *****ACTUAL***** *****MINIMUM**** *****MAXIMUM**** UNITS COMMENT
 @
-PCLK 201,1,21,(@)
-CLKR 201,21,7
-ETDS 201,1,,"d1:10 d2:14",(CP)
-ETDS 201,1,,"d1:0.5 d2:5.5 d3:11.5",(DS7,DS0)
-ETDS 201,1,,"d1:1 d2:6 d3:11",(S1,S0)
-ETDS 201,1,,"d1:3.5 d2:7.1",(_MR)
-ETDS 201,1,,"r1:19",(Q7,Q0)
-ETDS 201,1,,"d1:1 d2:6 d3:11.2 r1:19",(I_O7,I_O6,I_O5,I_O4,I_O3,I_O2,I_O1,I_O0)
-ETDS 201,1,,"",(Vcc)
 NOOP "7.5.4",,,

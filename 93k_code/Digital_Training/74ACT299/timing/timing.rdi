@@ -5,7 +5,7 @@ BWDS 1,,,"",(CP,DS7,DS0,S1,S0,_MR,I_O7,I_O6,I_O5,I_O4,I_O3,I_O2,I_O1,I_O0)
 ETDS 1,1,,"",(CP,DS7,DS0,S1,S0,_MR,Q7,Q0,I_O7,I_O6,I_O5,I_O4,I_O3,I_O2,I_O1,I_O0)
 DCDT 1,""
 TSUX 1,1
-EQSP TIM,WVT,#9000000850WAVETBL gross_func_wtb
+EQSP TIM,WVT,#9000000884WAVETBL gross_func_wtb
 
 	PINS CP
 		0	"d1:0 d2:0" 0
@@ -18,7 +18,7 @@ EQSP TIM,WVT,#9000000850WAVETBL gross_func_wtb
 		brk ""
 
 	PINS ser_out
-		0	"r1:L"	L
+		0	"r1:L"	L # Change device Cycle name:L -> A
 		1	"r1:H"	H
 
 	PINS mode ser_in

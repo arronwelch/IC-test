@@ -1,0 +1,22 @@
+<?xml version ='1.0' encoding ='UTF-8'?>
+<displays xmlns:xsi ='http://www.w3.org/2001/XMLSchema-instance'>
+ <signal name ='S0 (DVC)' index ='false'/>
+ <signal name ='S1 (DVC)' index ='false'/>
+ <signal name ='CP (DVC)' index ='false'/>
+ <signal name ='_MR (DVC)' index ='false'/>
+ <signal name ='DS0 (DVC)' index ='false'/>
+ <signal name ='DS7 (DVC)' index ='false'/>
+ <signal name ='I_O0 (DVC)' index ='false'/>
+ <signal name ='I_O1 (DVC)' index ='false'/>
+ <signal name ='I_O2 (DVC)' index ='false'/>
+ <signal name ='I_O3 (DVC)' index ='false'/>
+ <signal name ='I_O4 (DVC)' index ='false'/>
+ <signal name ='I_O5 (DVC)' index ='false'/>
+ <signal name ='I_O6 (DVC)' index ='false'/>
+ <signal name ='I_O7 (DVC)' index ='false'/>
+ <signal name ='Q0 (DVC)' index ='false'/>
+ <signal name ='Q7 (DVC)' index ='false'/>
+ <signal name ='Trans_IO::CLK (DVC)' index ='false'/>
+ <signal name ='Trans_IO::read (DVC)' index ='false'/>
+ <signal name ='Trans_IO::write (DVC)' index ='false'/>
+</displays>
