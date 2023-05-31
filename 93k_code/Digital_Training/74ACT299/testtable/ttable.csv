@@ -1,0 +1,8 @@
+"Suite name","Test name","Test number","Lsl","Lsl_typ","Usl_typ","Usl","Units","Lsl","Lsl_typ","Usl_typ","Usl","Units","Bin_s_num","Bin_s_name","Bin_h_num","Bin_h_name","Bin_type","Bin_reprobe","Bin_overon","Test_remarks"
+"Test mode","","","FT","FT","FT","FT","FT","QA","QA","QA","QA","QA","","","","","","","",""
+"Continuity","passVolt_mV","","200","GE","LE","800","","200","GE","LE","800","","2","Failed_Continuity","2","Failed_Continuity","bad","no","no",""
+"gross_func","Functional","","-100","GE","LE","100","","","NA","NA","","","4","Failed_Functional","4","Failed_Functional","bad","no","no",""
+"Leakage","passCurrentLow_uA","","","NA","NA","","","","NA","NA","","","6","Failed_IIL","6","Failed_IIL","bad","no","no",""
+"Leakage","passCurrentHigh_uA","","-100","GE","LE","100","","","NA","NA","","","7","Failed_IIH","6","Failed_IIH","bad","no","no",""
+"Leakage","FUNCTION TEST Low","","","","","","","","","","","","6","","6","","bad","no","no",""
+"Leakage","FUNCTION TEST High","","","","","","","","","","","","6","","6","","bad","no","no",""
