@@ -1,0 +1,13 @@
+    timestat file
+$first_pin_shown=CP
+$snap_mode=y
+$snap_value=500
+$edit_compatible=n
+$shapes_doubling=y
+$viewing_mode=1
+$viewing_wfset=202 2 2
+$viewing_tset=1
+$screen_size=1
+$show_mode=1
+$cycle_info=2 0 1
+$port_shown=@

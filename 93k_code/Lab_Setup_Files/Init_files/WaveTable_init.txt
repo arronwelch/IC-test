@@ -1,0 +1,156 @@
+
+######## SYNTAX ########
+#
+# WAVETBL <wavetable name>
+#
+#   DISPLAY  [ classic | single | multi ]
+#
+#   DCDT <default device cycle> 
+#
+#   ### physical waveform syntax ###
+#   PINS [ <pin name> | <group name> ]+
+#     <physical waveform index> <"edge actions"> <device cycle>
+#   ################################
+#
+#
+# 
+#   Drive edges are: d1 d2 d3 d4 d5 d6 d7 d8
+#      Drive edges can be specified in any order
+#      Tri-state is available on drive edges: d1 d3 d4 d6
+#      Tri-state is not available on drive edges: d2 d5 d7 d8
+#
+#   Compare (receive) edges are: r1 r2 r3 r4 r5 r6
+#      Compare edges can be specified in any order if there
+#      is no window compare.
+#      If a window compare occurs, all compare edges          
+#      for that pin must be ordered.
+#
+#
+#   Drive actions:
+#
+#   short | long |
+#      notation  | Description
+#   ------+------+---------------------------------     
+#    .      FNN    no action (hold)
+#    N      FNN    no action (hold)
+#           F0N    drive 0, hold tri-state
+#           F1N    drive 1, hold tri-state
+#    !Z     FN0	   turn off tri-state
+#    Z      FNZ    turn on tri-state
+#    0      F00    drive 0
+#           F0Z    drive 0, turn on tri-state
+#    1      F10    drive 1
+#           F1Z    drive 1, turn on tri-state
+#
+#
+#   Edge compare actions:
+#
+#      notation  | Description
+#   -------------+---------------------------------     
+#         L        compare to low
+#         H        compare to high
+#         M        compare to intermediate
+#         X        don't care (mask)
+#
+#
+#   Window compare actions:
+#
+#      notation  | Description
+#   -------------+---------------------------------     
+#         WL        window compare for low
+#         WH        window compare for high
+#         WM        window compare for intermediate 
+#         WX        window compare for don't care
+#         WU        window compare for unstable 
+#         WC        window close (must follow one of the above window compare actions)
+
+
+
+WAVETBL gross_func_wtb
+                    # Inputs are implemented using DNRZ signals only.
+                    # This wavetable gets used for relaxed functional 
+                    # verification.
+
+#          Phy. Waveform     Edge         Device Cycle 
+#             Indices       Actions           Names
+# ----------------------------------------------------------
+
+  PINS CP
+		0       	"d1:0 d2:0"     0
+                1       	"d1:1 d2:0"     1
+	   	 		brk "" 
+
+  PINS _MR
+                0       	"d1:0 d2:1"     0
+                1       	"d1:1 d2:1"     1
+   		 		brk "" 
+
+  PINS ser_out
+                0     		"r1:L" 	        L
+                1       	"r1:H" 	        H
+                2       	"r1:X" 	        X
+
+  PINS mode ser_in
+                0       	"d1:0" 	        0	 
+                1       	"d1:1"          1
+   	 		 	brk "" 
+ 
+  PINS io_pins
+                0       	"d1:0 r1:X"     0
+                1       	"d1:1 r1:X"     1
+                2       	"d1:Z r1:L"     L
+                3       	"d1:Z r1:H"     H
+                4       	"d1:Z r1:X"     X
+   	 	 		brk "" 
+
+
+
+
+#--------------------------------------------------------------------
+
+WAVETBL spec_search_wtb
+              # Inputs are implemented with SBC waveforms to allow
+              # testing of setup and hold time for input signals
+              # like mode and ser_in. Used for all spec searches.
+
+#          Phy. Waveform     Edge         Device Cycle 
+#             Indices       Actions           Names
+# ----------------------------------------------------------
+ 
+  PINS CP
+                 0         "d1:0 d2:0"          0
+                 1         "d1:1 d2:0"          1
+               brk         "" 
+
+  				
+  PINS mode
+                 0         "d1:1 d2:0 d3:1"     SBC_0
+                 1         "d1:0 d2:1 d3:0"     SBC_1
+                 2         "d1:0"               DNRZ_0
+                 3         "d1:1"               DNRZ_1
+               brk         "d1:0"
+			
+
+  PINS ser_out
+                 0         "r1:L"               L
+                 1         "r1:H"               H
+                 2         "r1:X"               X
+		 
+		 
+
+  PINS  ser_in
+                0          "d1:1 d2:0 d3:1"     0
+                1          "d1:0 d2:1 d3:0"     1
+   		           brk ""   
+
+
+
+  PINS _MR
+                 0         "d1:0 d2:1"          0
+                 1         "d1:1 d2:1"          1
+               brk         ""
+
+
+  PINS io_pins
+                 
+#--------------------------------------------------------------------

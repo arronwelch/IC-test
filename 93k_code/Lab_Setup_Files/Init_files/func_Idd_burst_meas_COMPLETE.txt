@@ -1,0 +1,27 @@
+    //Add your test code here.
+	  RDI_INIT();
+		  ON_FIRST_INVOCATION_BEGIN();
+		  CONNECT();
+		  RDI_BEGIN();
+		  rdi.func().label("gross_func").execute();
+		  rdi.dc("idd1").pin("Vcc").iMeasRange(1 mA).measWait(3 ms).average(128).iMeas().execute();
+		  RDI_END();
+
+		  DISCONNECT();
+		  ON_FIRST_INVOCATION_END();
+
+		  //Retrieve the test result
+		  double idd1 = rdi.id("idd1").getValue("Vcc");
+
+		  //Datalog
+		  cout << "idd1 = " << idd1 << endl;
+
+		// This method can use the LIMIT API which allows you to program the Limits
+		// directly in the TM.
+		// LIMIT limit(TM::GT,0, TM::LT,30);
+		// TESTSET().cont(true).judgeAndLog_ParametricTest("Vcc","dps_param",limit, idd1 );
+
+		// This is the standard TESTSET API that uses tmLimits which in turn uses the
+        // the test table to set the limits.
+        // TESTSET().cont(true).judgeAndLog_ParametricTest("Vcc","dps_param",tmLimits, idd1);
+    return;

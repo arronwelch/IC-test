@@ -1,0 +1,123 @@
+EQNSET 1 "gross_func_eqn"
+                       # Simple equation setup to be used with the "gross_func"
+                       # wavetable. No spec variables and no equations are 
+                       # used. All I/O pin resources are directly programmed 
+                       # with fixed values.
+
+  TIMINGSET 1 "20MHz"  # Period and edge delays for a 20MHz test
+
+    period = 50
+
+    PINS CP
+      d1 = 20
+      d2 = 45
+
+    PINS mode ser_in
+      d1 = 0
+      d2 = 30
+
+    PINS _MR
+      d1 = 0
+      d2 = 15
+
+    PINS ser_out
+      r1 = 45
+
+    PINS io_pins
+      d1 = 2
+      r1 = 45
+
+
+  TIMINGSET 2 "50MHz" # Period and edge delays for a 50MHz test
+
+    period = 20
+
+    PINS CP
+      d1 = 10
+      d2 = 18
+
+    PINS mode
+      d1 = 0
+      d2 = 12
+
+    PINS ser_in
+      d1 = 1
+      d2 = 12
+
+    PINS _MR
+      d1 = 0
+      d2 = 6
+
+    PINS ser_out
+      r1 = 19
+
+    PINS io_pins
+      d1 = 1
+      r1 = 19
+
+
+# -----------------------------------------------------------
+
+ EQNSET 2 "spec_search_eqn"
+
+ SPECS
+# -----------------------------------------------------------
+#   Spec         Unit
+# variables   
+# -----------------------------------------------------------
+
+  f             [MHz]
+  ts_Sx_CP      [ns]
+  th_CP_Sx      [ns]
+  ts_IOx_CP     [ns]
+  th_CP_IOx     [ns]
+  ts_DSx_CP     [ns]
+  th_CP_DSx     [ns]
+  tw_CP         [ns]
+  tw_MR         [ns]
+  trec_MR_CP    [ns]
+  tpd_CP_Qx     [ns]
+  tpd_CP_IOx    [ns]
+
+
+ EQUATIONS
+   p = (1/f) * 1000
+   CP_ref = p/2
+   ComplDelay = p/4   #  complement delay
+
+
+ TIMINGSET 1 "std"
+
+  period = p
+
+    PINS CP
+     d1 = CP_ref
+     d2 = CP_ref + tw_CP
+
+    PINS _MR
+     d1 = CP_ref - trec_MR_CP - tw_MR
+     d2 = CP_ref - trec_MR_CP
+
+
+   PINS mode
+   d1 = CP_ref - ts_Sx_CP - ComplDelay
+   d2 = CP_ref - ts_Sx_CP 
+   d3 = CP_ref + th_CP_Sx 
+
+
+    PINS ser_in
+     d1 = CP_ref - ts_DSx_CP - ComplDelay
+     d2 = CP_ref - ts_DSx_CP
+     d3 = CP_ref + th_CP_DSx
+
+
+    PINS ser_out
+     r1 = CP_ref + tpd_CP_Qx
+
+    PINS io_pins
+     d1 = 
+     d2 = 
+     d3 = 
+     r1 = 
+
+

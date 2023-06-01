@@ -1,0 +1,170 @@
+hp93000,level,0.1
+PSLV 1,0,0.01,HIZ,0,(Vcc)
+VBMP 1,0,OFF,(Vcc)
+DRLV 1,2250,2500,(CP,DS7,DS0,S1,S0,_MR,I/O7,I/O6,I/O5,I/O4,I/O3,I/O2,I/O1,I/O0)
+RCLV 1,2250,2500,(Q7,Q0,I/O7,I/O6,I/O5,I/O4,I/O3,I/O2,I/O1,I/O0)
+TERM 1,OFF,,,,,,(CP,DS7,DS0,S1,S0,_MR,Q7,Q0,I/O7,I/O6,I/O5,I/O4,I/O3,I/O2,I/O1,I/O0)
+CLMP 1,OFF,-1800,6800,(CP,DS7,DS0,S1,S0,_MR,Q7,Q0,I/O7,I/O6,I/O5,I/O4,I/O3,I/O2,I/O1,I/O0)
+LSUX 1
+EQSP LEV,EQN,#9000001297EQNSET 1 "NonSpecs"
+
+DPSPINS Vcc
+vout = 4.0
+ilimit = 1000
+t_ms = 4
+offcurr = act
+
+LEVELSET 1 "Nominal"
+
+PINS ctrl ser_in
+vil = 0
+vih = 4.3
+
+PINS ser_out
+
+vol = 2.4
+voh = 2.6
+
+PINS io_pins
+
+vil = 0
+vih = 4.3
+vol = 2.4
+voh = 2.6
+
+
+EQNSET 2 "specs"
+
+
+SPECS
+	VCC [V] #supply voltage
+	VIL [V] #low level input voltage
+	VIH [V] #high level input voltage
+	VOL [V] #low level output voltage
+	VOH [V] #high level output voltage
+
+
+DPSPINS Vcc
+vout = VCC
+ilimit = 1000
+t_ms = 4
+offcurr = act
+
+
+LEVELSET 1 "no termination"
+
+PINS ctrl ser_in
+vil = VIL
+vih = VIH
+
+PINS ser_out
+
+vol = VOL
+voh = VOH
+
+PINS io_pins
+
+vil = VIL
+vih = VIH
+vol = VOL
+voh = VOH
+
+#####################################################
+
+LEVELSET 2 "with termination"
+
+PINS ctrl ser_in
+vil = VIL
+vih = VIH
+
+PINS ser_out
+
+vol = VOL
+voh = VOH
+vt  = (VOH + VOL) / 2	##	enable termination, define level
+
+PINS io_pins
+
+vil = VIL
+vih = VIH
+vol = VOL
+voh = VOH
+vt  = (VOH + VOL) / 2	##	enable termination, define level
+
+
+
+LEVELSET 3 "with active load"
+
+PINS ctrl ser_in
+vil = VIL
+vih = VIH
+
+PINS ser_out
+
+vol = VOL
+voh = VOH
+vt  = (VOH + VOL) / 2
+iol = 24		#	enable active load, define load current
+ioh = 24		#	enable active load, define load current
+
+PINS io_pins
+
+vil = VIL
+vih = VIH
+vol = VOL
+voh = VOH
+vt  = (VOH + VOL) / 2
+iol = 24
+ioh = 24
+@
+EQSP LEV,SPS,#9000001599
+
+
+EQNSET 1 "NonSpecs"
+
+
+
+SPECSET 1 "no_specs"
+
+
+# SPECNAME       *****ACTUAL***** *****MINIMUM**** *****MAXIMUM**** UNITS COMMENT
+
+EQNSET 2 "specs"
+
+
+
+SPECSET 1 "Vcc=4.5V"
+
+
+# SPECNAME       *****ACTUAL***** *****MINIMUM**** *****MAXIMUM**** UNITS COMMENT
+VCC              4.5                                                [  V] 
+VIL              0                                                  [  V] 
+VIH              4.25                                               [  V] 
+VOL              2.2                                                [  V] 
+VOH              2.3                                                [  V] 
+
+
+
+SPECSET 2 "Vcc=4.2V"
+
+
+# SPECNAME       *****ACTUAL***** *****MINIMUM**** *****MAXIMUM**** UNITS COMMENT
+VCC              4.2                                                [  V] 
+VIL              0                                                  [  V] 
+VIH              4.1                                                [  V] 
+VOL              2.4                                                [  V] 
+VOH              2.6                                                [  V] 
+
+
+
+SPECSET 3 "Vcc=4.3V"
+
+
+# SPECNAME       *****ACTUAL***** *****MINIMUM**** *****MAXIMUM**** UNITS COMMENT
+VCC              4.3                                                [  V] 
+VIL              0                                                  [  V] 
+VIH              4.1                                                [  V] 
+VOL              2.7                                                [  V] 
+VOH              2.8                                                [  V] 
+@
+NOOP "7.1.4_99x1_20120516_1735",,,

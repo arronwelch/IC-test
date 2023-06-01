@@ -1,0 +1,27 @@
+EQNSET 1 "NonSpecs"
+
+  DPSPINS Vcc
+  vout = 4.5
+  vout_frc_rng = 7
+  iout_clamp_rng = 200
+  ilimit = 200
+  t_ms = 4
+  offcurr = act
+
+  LEVELSET 1 "nominal"
+
+    PINS ctrl ser_in
+      vil = 0               # V into open
+      vih = 4.3             # V into open
+
+    PINS ser_out
+      vol = 2.4             # V
+      voh = 2.6             # V
+
+    PINS io_pins
+      vil = 0
+      vih = 4.3
+      vol = 2.4
+      voh = 2.6
+
+#####################################################

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>74ACT299</name>
+	<comment></comment>
+	<projects>
+		<project>74ACT299_tml</project>
+		<project>74ACT299_RDI_tml</project>
+		<project>dc_JEFF_tml</project>
+		<project>New_TMLs</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.verigy.itee.tm.core.SOCProjectBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.verigy.itee.tm.core.socdevicenature</nature>
+		<nature>org.eclipse.cdt.core.cnature</nature>
+		<nature>org.eclipse.cdt.core.ccnature</nature>
+	</natures>
+</projectDescription>

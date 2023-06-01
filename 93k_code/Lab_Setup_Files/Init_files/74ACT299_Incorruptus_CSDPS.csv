@@ -1,0 +1,99 @@
+$,"Digital Pins"
+>,"Site Number"
+,2
+>,Name,No,Type,Mode,HW,"Connection Set",Comment,"Tester Channel 1","Tester Channel 2"
+,CP,12,i,std,PS1600,,,10509,10609
+,DS7,18,i,std,PS1600,,,10515,10615
+,DS0,11,i,std,PS1600,,,10508,10608
+,S1,19,i,std,PS1600,,,10516,10616
+,S0,1,i,std,PS1600,,,10507,10607
+,_MR,9,i,std,PS1600,,,10501,10601
+,Q7,17,o,std,PS1600,,,10514,10614
+,Q0,8,o,std,PS1600,,,10502,10602
+,I/O7,16,io,std,PS1600,,,10513,10613
+,I/O6,4,io,std,PS1600,,,10506,10606
+,I/O5,15,io,std,PS1600,,,10512,10612
+,I/O4,5,io,std,PS1600,,,10505,10605
+,I/O3,14,io,std,PS1600,,,10511,10611
+,I/O2,6,io,std,PS1600,,,10504,10604
+,I/O1,13,io,std,PS1600,,,10510,10610
+,I/O0,7,io,std,PS1600,,,10503,10603
+$,"Analog Pins"
+>,"Site Number"
+,2
+>,Name,No,Type,HW,Comment,"Tester Channel 1","Pad 1","Tester Channel 2","Pad 2"
+$,"DPS Pins"
+>,"Site Number"
+,2
+>,Name,Pol,C[uF],HW,Comment,"Tester Channel 1","Tester Channel 2"
+,Vcc,POS,1.0,DCS-DPS128HC,,22904,22902
+$,"Utility Pins"
+>,"Site Number"
+,2
+>,Name,Mode,t[ms],Comment,"Tester Channel 1","Tester Channel 2"
+$,Groups,Expression,all_in
+>,Expression,Type
+,"ctrl + ser_in + io_in",IO
+$,Groups,Expression,all_out
+>,Expression,Type
+,"io_out + ser_out",IO
+$,Groups,Expression,ctrl
+>,Expression,Type
+,"CP + _MR + mode",IO
+$,Groups,Fixed,io_in
+>,"Pin Name",Type
+,I/O7,I
+,I/O6,I
+,I/O5,I
+,I/O4,I
+,I/O3,I
+,I/O2,I
+,I/O1,I
+,I/O0,I
+$,Groups,Fixed,io_out
+>,"Pin Name",Type
+,I/O7,O
+,I/O6,O
+,I/O5,O
+,I/O4,O
+,I/O3,O
+,I/O2,O
+,I/O1,O
+,I/O0,O
+$,Groups,Expression,io_pins
+>,Expression,Type
+,"io_in + io_out",IO
+$,Groups,Fixed,mode
+>,"Pin Name",Type
+,S1,I
+,S0,I
+$,Groups,Fixed,ser_in
+>,"Pin Name",Type
+,DS7,I
+,DS0,I
+$,Groups,Fixed,ser_out
+>,"Pin Name",Type
+,Q7,O
+,Q0,O
+$,"Alias Sets",Trans_IO
+>,Alias,Pin
+,CLK,CP
+,read,S1
+,write,S0
+$,"DPS Channel Mode"
+>,"DPS Board",Type
+,1,8ch
+,2,4ch
+,3,N\A
+,4,N\A
+,5,N\A
+,6,N\A
+,7,N\A
+,8,N\A
+$,Trigger
+>,"Trigger Channel","Trigger Source","Trigger Input","Destination Units1","Destination Units2","Destination Units3","Destination Units4","Destination Units5","Destination Units6","Destination Units7","Destination Units8"
+$,"DC Scale Limits"
+>,Name,"Max Volt[V]","Min Volt[V]","Max Source[A]","Max Sink[A]"
+,Vcc,OFF,OFF,OFF,OFF
+$,"DC Scale Extensions"
+>,Name,HCU,TMU

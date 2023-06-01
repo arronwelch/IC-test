@@ -1,0 +1,23 @@
+    //Add your test code here.
+	  RDI_INIT();
+		  ON_FIRST_INVOCATION_BEGIN();
+		  CONNECT();
+		  RDI_BEGIN(TA::BURST);
+
+		  rdi.dc("Vid1").pin("I/O1").iForce().vMeas().clamp().valueMode(TA::BADC).relay(TA::ppmuRly_onPPMU_offACDC, TA::ppmuRly_NO).execute();
+		  rdi.dc("Vid2").pin("I/O3").iForce().vMeas().clamp().valueMode(TA::BADC).relay(TA::ppmuRly_onPPMU_offACDC,  TA::ppmuRly_NO).execute();
+		  rdi.hwRelay().pin("I/O1,I/O3").setOff("PPMU").execute();
+		  RDI_END();
+		  DISCONNECT();
+		  ON_FIRST_INVOCATION_END();
+
+		  //Retrieve the test result
+
+		  //Datalog
+		  cout << "vout_I/O1 = " << vout1 << endl;
+		  cout << "vout_I/O3 = " << vout2 << endl;
+
+		 // TESTSET().cont(true).judgeAndLog_ParametricTest("I/O1","V_I/O1",tmLimits, vout1 );
+		 // TESTSET().cont(true).judgeAndLog_ParametricTest("I/O3","V_I/O3",tmLimits, vout2 );
+
+    return;

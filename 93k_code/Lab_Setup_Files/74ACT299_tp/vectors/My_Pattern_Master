@@ -1,0 +1,12 @@
+hp93000,pattern_master_file,0.1
+
+path:
+../vectors
+
+files:
+p4
+p3
+p2
+p1
+--gross_func
+

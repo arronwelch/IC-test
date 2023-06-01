@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="_dcs_m_Vcc_im_avg128__v0">DEFAULT</entry>
+<entry key="gross_func">DEFAULT</entry>
+<entry key="_dcs_mr_Vcc_imr_1m__v0">Dynamic_DC_DPS</entry>
+<entry key="_rly_I/O1_I/O3_OPM_OFF_v0">DEFAULT</entry>
+<entry key="gross_func_leak">DEFAULT</entry>
+<entry key="_ppmu_I/O1_if-0.024_mbadc_o_vm_clp0-4.25_rly0-11_v0">DEFAULT</entry>
+<entry key="gross_func_2">DEFAULT</entry>
+</properties>

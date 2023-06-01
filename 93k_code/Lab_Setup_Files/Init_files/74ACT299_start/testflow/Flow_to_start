@@ -1,0 +1,195 @@
+hp93000,testflow,0.1
+language_revision = 1;
+
+information
+
+end
+-----------------------------------------------------------------
+declarations
+
+end
+-----------------------------------------------------------------
+implicit_declarations
+
+end
+-----------------------------------------------------------------
+flags
+
+datalog_formatter = 0;
+datalog_sample_size = 1;
+graphic_result_displa = 1;
+state_display = 0;
+print_wafermap = 0;
+ink_wafer = 0;
+max_reprobes = 1;
+temp_monitor = 1;
+calib_age_monitor = 1;
+diag_monitor = 1;
+current_monitor = 1;
+log_events_enable = 1;
+set_pass_level = 0;
+set_fail_level = 0;
+set_bypass_level = 0;
+hold_on_fail = 0;
+global_hold = 0;
+debug_mode = 0;
+debug_analog = 0;
+parallel_mode = 1;
+site_match_mode = 2;
+global_overon = 0;
+limits_enable = 0;
+test_number_enable = 1;
+test_number_inc = 1;
+log_cycles_before = 0;
+log_cycles_after = 0;
+unburst_mode = 0;
+sqst_mode = 0;
+warn_as_fail = 1;
+use_hw_dsp = 0;
+dsp_file_enable = 0;
+buffer_testflow_log = 0;
+check_testmethod_api = 0;
+stdf_generation = 1;
+tm_crash_as_fatal = 1;
+hidden_datalog_mode = 0;
+end
+-----------------------------------------------------------------
+testmethodparameters
+tm_1:
+  "testName" = "Functional";
+  "output" = "None";
+tm_2:
+  "pinlist" = "@";
+  "testCurrent" = "-80[uA]";
+  "settlingTime" = "4[ms]";
+  "measurementMode" = "PPMUpar";
+  "polarity" = "BPOL";
+  "prechargeToZeroVol" = "ON";
+  "testName" = "passVolt_mV";
+  "output" = "ReportUI";
+tm_3:
+  "pinlist" = "io_in";
+  "measure" = "BOTH";
+  "measureMode" = "PPMUpar";
+  "relaySwitchMode" = "DEFAULT(BBM)";
+  "forceVoltageLow" = "400[mV]";
+  "forceVoltageHigh" = "4.3[mV]";
+  "spmuClampCurrentLow" = "0[uA]";
+  "spmuClampCurrentHigh" = "0[uA]";
+  "ppmuPreCharge" = "ON";
+  "prechargeVoltageLow" = "0[mV]";
+  "prechargeVoltageHigh" = "0[mV]";
+  "settlingTimeLow" = "2[ms]";
+  "settlingTimeHigh" = "2[ms]";
+  "preFunction" = "ALL";
+  "controlTestNumOfFunctional" = "NO";
+  "stopCycVecLow" = "0";
+  "stopCycVecHigh" = "0";
+  "testName" = "(passCurrentLow_uA,passCurrentHigh_uA)";
+  "output" = "ReportUI";
+end
+-----------------------------------------------------------------
+testmethodlimits
+tm_1:
+  "Functional" = "":"NA":"":"NA":"":"":"";
+tm_2:
+  "passVolt_mV" = "200":"GE":"800":"LE":"":"":"0";
+tm_3:
+  "passCurrentLow_uA" = "-100":"GE":"100":"LE":"":"":"0";
+  "passCurrentHigh_uA" = "-100":"GE":"100":"LE":"":"":"0";
+end
+-----------------------------------------------------------------
+testmethods
+tm_1:
+  testmethod_class = "ac_tml.AcTest.FunctionalTest";
+tm_2:
+  testmethod_class = "dc_tml.DcTest.Continuity";
+tm_3:
+  testmethod_class = "dc_tml.DcTest.Leakage";
+end
+-----------------------------------------------------------------
+test_suites
+Continuity:
+  override = 1;
+ override_tim_equ_set = 1;
+ override_lev_equ_set = 2;
+ override_tim_spec_set = 1;
+ override_lev_spec_set = 2;
+ override_timset = 1;
+ override_levset = 1;
+ override_seqlbl = "gross_func";
+ override_testf = tm_2;
+local_flags  = output_on_pass, output_on_fail, value_on_pass, value_on_fail, per_pin_on_pass, per_pin_on_fail;
+ site_match = 0;
+ site_control = "parallel:";
+gross_funct:
+  override = 1;
+ override_tim_equ_set = 1;
+ override_lev_equ_set = 2;
+ override_tim_spec_set = 1;
+ override_lev_spec_set = 2;
+ override_timset = 1;
+ override_levset = 1;
+ override_seqlbl = "gross_func";
+ override_testf = tm_1;
+local_flags  = output_on_pass, output_on_fail, value_on_pass, value_on_fail, per_pin_on_pass, per_pin_on_fail;
+ site_match = 0;
+ site_control = "parallel:";
+leakage:
+  override = 1;
+ override_tim_equ_set = 1;
+ override_lev_equ_set = 2;
+ override_tim_spec_set = 1;
+ override_lev_spec_set = 2;
+ override_timset = 1;
+ override_levset = 1;
+ override_seqlbl = "gross_func_leak";
+ override_testf = tm_3;
+local_flags  = output_on_pass, output_on_fail, value_on_pass, value_on_fail, per_pin_on_pass, per_pin_on_fail;
+ site_match = 0;
+ site_control = "parallel:";
+end
+-----------------------------------------------------------------
+test_flow
+
+ run_and_branch(Continuity)
+ then
+ {
+ }
+ else
+ {
+    stop_bin "3", "Failed Continuity", , bad, noreprobe, red, 3, over_on;
+ }
+ run_and_branch(gross_funct)
+ then
+ {
+ }
+ else
+ {
+    stop_bin "2", "Failed functional", , bad, noreprobe, red, 2, over_on;
+ }
+ run_and_branch(leakage)
+ then
+ {
+ }
+ else
+ {
+    stop_bin "4", "Failed Leakage", , bad, noreprobe, red, 4, over_on;
+ }
+ stop_bin "1", "Pass", , good, noreprobe, green, 1, over_on;
+end
+-----------------------------------------------------------------
+binning
+otherwise bin = "db", "", , bad, noreprobe, red, , not_over_on;
+end
+-----------------------------------------------------------------
+context
+
+context_config_file = "pins_74ACT299_Incorruptus_CSDPS";
+context_levels_file = "levels";
+context_timing_file = "timing";
+context_vector_file = "all.binl";
+end
+-----------------------------------------------------------------
+hardware_bin_descriptions
+end

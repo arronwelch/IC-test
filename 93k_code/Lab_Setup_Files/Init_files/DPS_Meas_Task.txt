@@ -1,0 +1,16 @@
+virtual void run()
+  {
+    //Add your test code here.
+	  DPS_TASK measTask;
+	  ON_FIRST_INVOCATION_BEGIN();
+	  CONNECT();
+	  measTask.pin("Vcc").min(1 uA).max(100 uA).measurementMode(TM::MEASURE_CURRENT);
+	  measTask.execMode(TM::PVAL).wait(5 ms).execute();
+	  ON_FIRST_INVOCATION_END();
+	  double measuredValue = measTask.getValue("Vcc");
+
+      TESTSET().cont(true).judgeAndLog_ParametricTest("Vcc","static_icc",tmLimits, measuredValue*1E6 );
+      cout <<" DPS current = " << 1E6 *  measuredValue << "uAmps " << endl;
+
+    return;
+  }

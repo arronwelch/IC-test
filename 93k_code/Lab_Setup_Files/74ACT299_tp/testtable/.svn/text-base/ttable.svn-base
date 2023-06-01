@@ -1,0 +1,8 @@
+"Suite name","Test name","Test number","Lsl","Lsl_typ","Usl_typ","Usl","Units","Lsl","Lsl_typ","Usl_typ","Usl","Units","Bin_s_num","Bin_s_name","Bin_h_num","Bin_h_name","Bin_type","Bin_reprobe","Bin_overon","Test_remarks"
+"Test mode","","","FT","FT","FT","FT","FT","QA","QA","QA","QA","QA","","","","","","","",""
+"Continuity","passVolt_mV","","200","GE","LE","800","","200","GE","LE","800","","","","","","","","",""
+"gross_funct","Functional","","","NA","NA","","","","NA","NA","","","","","","","","","",""
+"leakage","passCurrentLow_uA","","-100","GE","LE","100","","-100","GE","LE","100","","","","","","","","",""
+"leakage","passCurrentHigh_uA","","-100","GE","LE","100","","-100","GE","LE","100","","","","","","","","",""
+"DPS_Meas_Task","dps_param","","0.001","GE","LE","0.1","","","","","","","","","","","","","",""
+"DPS_Meas","dps_param1","","0","GE","LE","10","","","","","","","","","","","","","",""

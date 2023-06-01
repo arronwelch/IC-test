@@ -1,0 +1,351 @@
+hp93000,timing,0.1
+PCLK 1,1,20,(@)
+CLKR 1,10,10
+BWDS 1,,,"",(CP,DS7,DS0,S1,S0,_MR,I/O7,I/O6,I/O5,I/O4,I/O3,I/O2,I/O1,I/O0)
+ETDS 1,1,,"",(CP,DS7,DS0,S1,S0,_MR,Q7,Q0,I/O7,I/O6,I/O5,I/O4,I/O3,I/O2,I/O1,I/O0)
+DCDT 1,""
+TSUX 1,1
+EQSP TIM,WVT,#9000004400######## SYNTAX ########
+#
+# WAVETBL <wavetable name>
+#
+# 
+#   Drive edges are: d1 d2 d3 d4 d5 d6 d7 d8
+#      Drive edges can be specified in any order
+#
+#   Compare (receive) edges are: r1 r2 r3 r4 r5 r6 r7 r8
+#      Compare edges can be specified in any order if there
+#      is no window compare.
+#      If a window compare occurs, all compare edges          
+#      for that pin must be ordered.
+#
+#
+#   Drive actions:
+#
+#   short | long |
+#      notation  | Description
+#   ------+------+---------------------------------     
+#    .      FNN    no action (hold)
+#    N      FNN    no action (hold)
+#           F0N    drive 0, hold tri-state
+#           F1N    drive 1, hold tri-state
+#    !Z     FN0	   turn off tri-state
+#    Z      FNZ    turn on tri-state
+#    0      F00    drive 0
+#           F0Z    drive 0, turn on tri-state
+#    1      F10    drive 1
+#           F1Z    drive 1, turn on tri-state
+#
+#
+#   Edge compare actions:
+#
+#      notation  | Description
+#   -------------+---------------------------------     
+#         L        compare to low
+#         H        compare to high
+#         M        compare to intermediate
+#         X        don't care (mask)
+#
+#
+#   Window compare actions:
+#
+#      notation  | Description
+#   -------------+---------------------------------     
+#         WL        window compare for low
+#         WH        window compare for high
+#         WM        window compare for intermediate 
+#         WX        window compare for don't care
+#         WU        window compare for unstable 
+#         WC        window close (must follow one of the above window compare actions)
+
+
+
+WAVETBL gross_func_wtb
+                    # Inputs are implemented using DNRZ signals only.
+                    # This wavetable gets used for relaxed functional 
+                    # verification.
+
+#          Phy. Waveform     Edge         Device Cycle 
+#             Indices       Actions           Names
+# ----------------------------------------------------------
+
+  PINS CP
+		 		0       	"d1:0 d2:0"			0
+                1       	"d1:1 d2:0"			1
+	   	 		brk     	"" 
+
+  PINS _MR
+                0       	"d1:0 d2:1" 		0
+                1       	"d1:1 d2:1"			1
+   		 		brk     	"" 
+
+  PINS ser_out
+                0     		"r1:L" 				L
+                1       	"r1:H" 				H
+                2       	"r1:X" 				X
+
+  PINS mode ser_in
+                0       	"d1:0" 				0	
+                1       	"d1:1" 				1
+   	 		 	brk     	"" 
+ 
+  PINS io_pins
+                0       	"d1:0 r1:X" 		0
+                1       	"d1:1 r1:X" 		1
+                2       	"d1:Z r1:L" 		L
+                3       	"d1:Z r1:H"			H
+                4       	"d1:Z r1:X" 		X
+   	 	 		brk     	"" 
+
+
+#-----------------------------------------------------------
+
+#-----------------------------------------------------------
+
+WAVETBL spec_search_wtb
+              # Inputs are implemented with SBC waveforms to allow
+              # testing of setup and hold time for input signals
+              # like mode and ser_in. Used for all spec searches.
+
+#          Phy. Waveform     Edge         Device Cycle 
+#             Indices       Actions           Names
+# ----------------------------------------------------------
+ 
+  PINS CP
+                 0         "d1:0 d2:0"          0
+                 1         "d1:1 d2:0"          1
+               brk         "" 
+
+				
+  PINS mode
+                 0         "d1:1 d2:0 d3:1"     SBC_0
+                 1         "d1:0 d2:1 d3:0"     SBC_1
+                 2         "d1:0"               DNRZ_0
+                 3         "d1:1"               DNRZ_1
+               brk         ""
+			
+
+
+
+  PINS ser_out
+                 0         "r1:L"               L
+                 1         "r1:H"               H
+                 2         "r1:X"               X
+
+
+
+  PINS _MR
+                0       	"d1:0 d2:1" 	0
+                1       	"d1:1 d2:0"		1
+   		 		brk     	"" 
+
+  PINS  ser_in
+                0       	"d1:1 d2:0 d3:1" 		0
+                1       	"d1:0 d2:1 d3:0"		1
+   		 		brk     	""   
+
+
+              
+  PINS io_pins
+                0       	"d1:1 d2:0 d3:1 " 		0
+                1       	"d1:0 d2:1 d3:0" 		1
+                2       	"d1:Z r1:L" 		L
+                3       	"d1:Z r1:H"			H
+                4       	"d1:Z r1:X" 		X
+   	 	 		brk     	"" 
+
+
+
+#--------------------------------------------------------------------
+@
+EQSP TIM,EQN,#9000002148EQNSET 1 "gross_func_eqn"
+                       # Simple equation setup to be used with the "gross_func"
+                       # wavetable. No spec variables and no equations are 
+                       # used. All I/O pin resources are directly programmed 
+                       # with fixed values.
+SPECS
+tpdIOx	[ns]
+
+  TIMINGSET 1 "20MHz"  # Period and edge delays for a 20MHz test
+
+    period = 50
+
+    PINS CP
+      d1 = 20
+      d2 = 45
+
+    PINS mode ser_in
+      d1 = 0
+      d2 = 30
+
+    PINS _MR
+      d1 = 0
+      d2 = 15
+
+    PINS ser_out
+      r1 = 45
+
+    PINS io_pins
+      d1 = 2
+      r1 = 45
+
+
+  TIMINGSET 2 "50MHz" # Period and edge delays for a 50MHz test
+
+    period = 20
+
+    PINS CP
+      d1 = 7
+      d2 = 17
+
+    PINS mode
+      d1 = 0
+      d2 = 12
+
+    PINS ser_in
+      d1 = 1
+      d2 = 12
+
+    PINS _MR
+      d1 = 0
+      d2 = 8
+
+    PINS ser_out
+      r1 = 21.5
+
+    PINS io_pins
+      d1 = 1
+      r1 = 7 + tpdIOx
+
+
+# -----------------------------------------------------------
+
+ EQNSET 2 "spec_search_eqn"
+
+ SPECS
+# -----------------------------------------------------------
+#   Spec         Unit
+# variables   
+# -----------------------------------------------------------
+
+  f             [MHz]
+  ts_Sx_CP      [ns]
+  th_CP_Sx      [ns]
+  ts_IOx_CP     [ns]
+  th_CP_IOx     [ns]
+  ts_DSx_CP     [ns]
+  th_CP_DSx     [ns]
+  tw_CP         [ns]
+  tw_MR         [ns]
+  trec_MR_CP    [ns]
+  tpd_CP_Qx     [ns]
+  tpd_CP_IOx    [ns]
+
+
+ EQUATIONS
+   p = 1/f*1000
+   CP_ref = p/2
+   ComplDelay = p/4   #  complement delay
+
+
+ TIMINGSET 1 "std"
+
+  period = p
+
+    PINS CP
+     d1 = CP_ref
+     d2 = CP_ref + tw_CP
+
+    PINS _MR
+     d1 = CP_ref - trec_MR_CP - tw_MR
+     d2 = CP_ref - trec_MR_CP
+
+
+   PINS mode
+   d1 = CP_ref - ts_Sx_CP - ComplDelay
+   d2 = CP_ref - ts_Sx_CP 
+   d3 = CP_ref + th_CP_Sx 
+
+
+    PINS ser_in
+     d1 = CP_ref - ts_DSx_CP - ComplDelay
+     d2 = CP_ref - ts_DSx_CP
+     d3 = CP_ref + th_CP_Sx
+
+
+    PINS ser_out
+     r1 = CP_ref + tpd_CP_Qx
+
+    PINS io_pins
+     d1 = CP_ref - ts_IOx_CP - ComplDelay
+     d2 = CP_ref - ts_IOx_CP
+     d3 = CP_ref + th_CP_IOx
+     r1 = CP_ref + tpd_CP_IOx
+
+
+@
+EQSP TIM,SPS,#9000002422
+
+
+EQNSET 2 "spec_search_eqn"
+
+
+WAVETBL "spec_search_wtb"
+
+CHECK all
+
+SPECSET 1 "spec_search_specs"
+
+
+# SPECNAME       *****ACTUAL***** *****MINIMUM**** *****MAXIMUM**** UNITS COMMENT
+f                50                                                 [MHz] 
+ts_Sx_CP         7                3                10               [ ns] 
+th_CP_Sx         1                -4               2                [ ns] 
+ts_IOx_CP        4                1.5              5                [ ns] 
+th_CP_IOx        1.2              -12              2.2              [ ns] 
+ts_DSx_CP        4.5              1.5              6.5              [ ns] 
+th_CP_DSx        1.5              -2               2.5              [ ns] 
+tw_CP            4                0                5                [ ns] 
+tw_MR            3.5              1.5              5                [ ns] 
+trec_MR_CP       3                0.5              5                [ ns] 
+tpd_CP_Qx        12               42               13.5             [ ns] 
+tpd_CP_IOx       12               4.5              15               [ ns] 
+
+EQNSET 1 "gross_func_eqn"
+
+
+WAVETBL "gross_func_wtb"
+
+CHECK all
+
+SPECSET 1 "gross_func_specs"
+
+
+# SPECNAME       *****ACTUAL***** *****MINIMUM**** *****MAXIMUM**** UNITS COMMENT
+tpdIOx           0                                                  [ ns] 
+
+EQNSET 2 "spec_search_eqn"
+
+
+WAVETBL "gross_func_wtb"
+
+CHECK all
+
+SPECSET 2 "spec_search_nominal"
+
+
+# SPECNAME       *****ACTUAL***** *****MINIMUM**** *****MAXIMUM**** UNITS COMMENT
+f                5                0                30               [MHz] 
+ts_Sx_CP         20               0                30               [ ns] 
+th_CP_Sx         20               0                30               [ ns] 
+ts_IOx_CP        20               0                30               [ ns] 
+th_CP_IOx        20               0                30               [ ns] 
+ts_DSx_CP        20               0                30               [ ns] 
+th_CP_DSx        1.5              -2               2                [ ns] 
+tw_CP            100              0                110              [ ns] 
+tw_MR            100              0                110              [ ns] 
+trec_MR_CP       30               0                40               [ ns] 
+tpd_CP_Qx        20               0                30               [ ns] 
+tpd_CP_IOx       15               0                30               [ ns] 
+@
+NOOP "7.4.0",,,

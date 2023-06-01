@@ -1,0 +1,8 @@
+hp93000,testprog,0.1
+Testflow:   TM_flow_ttable
+Userproc:   
+Waferdescr: 
+Applicdata: .TP360
+Pdi_lib: /opt/hp93000/TP360/lib/exec_input
+Hp_lib: 
+Dataform:   

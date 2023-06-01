@@ -66,7 +66,7 @@ tm_2:
   "polarity" = "BPOL";
   "prechargeToZeroVol" = "ON";
   "testName" = "passVolt_mV";
-  "output" = "None";
+  "output" = "ReportUI";
 tm_4:
   "pinlist" = "@";
   "measure" = "BOTH";
@@ -86,7 +86,7 @@ tm_4:
   "stopCycVecLow" = "0";
   "stopCycVecHigh" = "0";
   "testName" = "(passCurrentLow_uA,passCurrentHigh_uA)";
-  "output" = "None";
+  "output" = "ReportUI";
 end
 -----------------------------------------------------------------
 testmethodlimits
@@ -190,6 +190,7 @@ context_levels_file = "levels.rdi";
 context_timing_file = "timing.rdi";
 context_vector_file = "all.binl";
 context_channel_attrib_file = "ChannelAttribute.soc";
+context_testtable_file = "ttable.csv";
 end
 -----------------------------------------------------------------
 hardware_bin_descriptions

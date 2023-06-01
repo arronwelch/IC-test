@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.verigy.itee.utm.editor.debug.2081549715">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.verigy.itee.utm.editor.debug.2081549715" moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/74ACT299_RDI_tml"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/74ACT299_RDI_tml/Debug"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="74ACT299_RDI_tml"/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="so" artifactName="74ACT299_RDI_tml" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.sharedLib" cleanCommand="rm -rf" description="" id="com.verigy.itee.utm.editor.debug.2081549715" name="Debug" parent="com.verigy.itee.utm.editor.debug">
+					<folderInfo id="com.verigy.itee.utm.editor.debug.2081549715." name="/" resourcePath="">
+						<toolChain id="com.verigy.itee.utm.editor.toolchain.debug.1818224450" name="Test Method Library Tool Chain" superClass="com.verigy.itee.utm.editor.toolchain.debug">
+							<targetPlatform id="com.verigy.itee.utm.editor.targetplatform.debug.638412455" isAbstract="false" name="Debug Platform" superClass="com.verigy.itee.utm.editor.targetplatform.debug"/>
+							<builder buildPath="${workspace_loc:/74ACT299_RDI_tml/Debug}" id="com.verigy.itee.utm.editor.builder.debug.594023903" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" parallelizationNumber="1" superClass="com.verigy.itee.utm.editor.builder.debug"/>
+							<tool id="com.verigy.itee.utm.editor.tool.cpp.compiler.debug.259304988" name="GCC C++ Compiler" superClass="com.verigy.itee.utm.editor.tool.cpp.compiler.debug">
+								<option id="gnu.cpp.compiler.so.debug.option.optimization.level.928838447" name="Optimization Level" superClass="gnu.cpp.compiler.so.debug.option.optimization.level" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.so.debug.option.debugging.level.1828461613" name="Debug Level" superClass="gnu.cpp.compiler.so.debug.option.debugging.level" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
+								<option id="com.verigy.itee.utm.editor.tool.cpp.compiler.option.debug.318471551" name="Include paths (-I)" superClass="com.verigy.itee.utm.editor.tool.cpp.compiler.option.debug" valueType="includePath">
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/prod_com/include"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/prod_com/include/MAPI"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/testmethod/include"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/com/include"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/pws/lib"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/segments/tml/include"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/prod_com/rdi/include"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1805037394" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="com.verigy.itee.utm.editor.tool.c.compiler.debug.464253796" name="GCC C Compiler" superClass="com.verigy.itee.utm.editor.tool.c.compiler.debug">
+								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.so.debug.option.optimization.level.1305995503" name="Optimization Level" superClass="gnu.c.compiler.so.debug.option.optimization.level" valueType="enumerated"/>
+								<option id="gnu.c.compiler.so.debug.option.debugging.level.1525024433" name="Debug Level" superClass="gnu.c.compiler.so.debug.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
+								<option id="com.verigy.itee.utm.editor.tool.c.compiler.option.debug.477378889" name="Include paths (-I)" superClass="com.verigy.itee.utm.editor.tool.c.compiler.option.debug" valueType="includePath">
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/prod_com/include"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/prod_com/include/MAPI"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/testmethod/include"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/com/include"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/pws/lib"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/segments/tml/include"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/prod_com/rdi/include"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.2085952608" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="com.verigy.itee.utm.editor.tool.cpp.linker.debug.652653661" name="GCC C++ Linker" superClass="com.verigy.itee.utm.editor.tool.cpp.linker.debug">
+								<option defaultValue="true" id="gnu.cpp.link.so.debug.option.shared.1295577145" name="Shared (-shared)" superClass="gnu.cpp.link.so.debug.option.shared" valueType="boolean"/>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.632941208" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="com.verigy.itee.utm.editor.tool.c.linker.debug.1198420393" name="GCC C Linker" superClass="com.verigy.itee.utm.editor.tool.c.linker.debug">
+								<option defaultValue="true" id="gnu.c.link.so.debug.option.shared.1160013674" name="Shared (-shared)" superClass="gnu.c.link.so.debug.option.shared" valueType="boolean"/>
+							</tool>
+							<tool id="com.verigy.itee.utm.editor.tool.assembler.debug.1893148955" name="GCC Assembler" superClass="com.verigy.itee.utm.editor.tool.assembler.debug">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1225970204" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+		<cconfiguration id="com.verigy.itee.utm.editor.release.433769594">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.verigy.itee.utm.editor.release.433769594" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings>
+					<externalSetting>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="includePath" name="/74ACT299_RDI_tml"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="libraryPath" name="/74ACT299_RDI_tml/Release"/>
+						<entry flags="RESOLVED" kind="libraryFile" name="74ACT299_RDI_tml"/>
+					</externalSetting>
+				</externalSettings>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="so" artifactName="74ACT299_RDI_tml" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.sharedLib" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.sharedLib" cleanCommand="rm -fr" description="" id="com.verigy.itee.utm.editor.release.433769594" name="Release" parent="com.verigy.itee.utm.editor.release">
+					<folderInfo id="com.verigy.itee.utm.editor.release.433769594." name="/" resourcePath="">
+						<toolChain id="com.verigy.itee.utm.editor.toolchain.release.2022438281" name="Test Method Library Tool Chain" superClass="com.verigy.itee.utm.editor.toolchain.release">
+							<targetPlatform id="com.verigy.itee.utm.editor.targetplatform.release.1345587379" isAbstract="false" name="Release Platform" superClass="com.verigy.itee.utm.editor.targetplatform.release"/>
+							<builder buildPath="${workspace_loc:/74ACT299_RDI_tml/Release}" id="com.verigy.itee.utm.editor.builder.release.914452652" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" parallelizationNumber="1" superClass="com.verigy.itee.utm.editor.builder.release"/>
+							<tool id="com.verigy.itee.utm.editor.tool.cpp.compiler.release.162854734" name="GCC C++ Compiler" superClass="com.verigy.itee.utm.editor.tool.cpp.compiler.release">
+								<option id="gnu.cpp.compiler.so.release.option.optimization.level.1175432686" name="Optimization Level" superClass="gnu.cpp.compiler.so.release.option.optimization.level" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.so.release.option.debugging.level.36234190" name="Debug Level" superClass="gnu.cpp.compiler.so.release.option.debugging.level" value="gnu.cpp.compiler.debugging.level.none" valueType="enumerated"/>
+								<option id="com.verigy.itee.utm.editor.tool.cpp.compiler.option.release.1581800366" name="Include paths (-I)" superClass="com.verigy.itee.utm.editor.tool.cpp.compiler.option.release" valueType="includePath">
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/prod_com/include"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/prod_com/include/MAPI"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/testmethod/include"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/com/include"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/pws/lib"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/segments/tml/include"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/prod_com/rdi/include"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.2098664370" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+							</tool>
+							<tool id="com.verigy.itee.utm.editor.tool.c.compiler.release.571975988" name="GCC C Compiler" superClass="com.verigy.itee.utm.editor.tool.c.compiler.release">
+								<option defaultValue="gnu.c.optimization.level.most" id="gnu.c.compiler.so.release.option.optimization.level.702008806" name="Optimization Level" superClass="gnu.c.compiler.so.release.option.optimization.level" valueType="enumerated"/>
+								<option id="gnu.c.compiler.so.release.option.debugging.level.1626344689" name="Debug Level" superClass="gnu.c.compiler.so.release.option.debugging.level" value="gnu.c.debugging.level.none" valueType="enumerated"/>
+								<option id="com.verigy.itee.utm.editor.tool.c.compiler.option.release.580275568" name="Include paths (-I)" superClass="com.verigy.itee.utm.editor.tool.c.compiler.option.release" valueType="includePath">
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/prod_com/include"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/prod_com/include/MAPI"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/testmethod/include"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/com/include"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/pws/lib"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/segments/tml/include"/>
+									<listOptionValue builtIn="false" value="${HP83000_ROOT}/prod_com/rdi/include"/>
+								</option>
+								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1291845688" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+							</tool>
+							<tool id="com.verigy.itee.utm.editor.tool.cpp.linker.release.1990218031" name="GCC C++ Linker" superClass="com.verigy.itee.utm.editor.tool.cpp.linker.release">
+								<option defaultValue="true" id="gnu.cpp.link.so.release.option.shared.998887017" name="Shared (-shared)" superClass="gnu.cpp.link.so.release.option.shared" valueType="boolean"/>
+								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.2031571831" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
+									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
+								</inputType>
+							</tool>
+							<tool id="com.verigy.itee.utm.editor.tool.c.linker.release.1309301026" name="GCC C Linker" superClass="com.verigy.itee.utm.editor.tool.c.linker.release">
+								<option defaultValue="true" id="gnu.c.link.so.release.option.shared.1504436952" name="Shared (-shared)" superClass="gnu.c.link.so.release.option.shared" valueType="boolean"/>
+							</tool>
+							<tool id="com.verigy.itee.utm.editor.tool.assembler.release.1292907072" name="GCC Assembler" superClass="com.verigy.itee.utm.editor.tool.assembler.release">
+								<inputType id="cdt.managedbuild.tool.gnu.assembler.input.1181125224" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+							</tool>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="74ACT299_RDI_tml.com.verigy.itee.utm.editor.utmproject.533500446" name="Test Method Library" projectType="com.verigy.itee.utm.editor.utmproject"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="com.verigy.itee.utm.editor.debug.2081549715;com.verigy.itee.utm.editor.debug.2081549715.;com.verigy.itee.utm.editor.tool.c.compiler.debug.464253796;cdt.managedbuild.tool.gnu.c.compiler.input.2085952608">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.verigy.itee.utm.editor.debug.2081549715;com.verigy.itee.utm.editor.debug.2081549715.;com.verigy.itee.utm.editor.tool.cpp.compiler.debug.259304988;cdt.managedbuild.tool.gnu.cpp.compiler.input.1805037394">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.verigy.itee.utm.editor.release.433769594;com.verigy.itee.utm.editor.release.433769594.;com.verigy.itee.utm.editor.tool.c.compiler.release.571975988;cdt.managedbuild.tool.gnu.c.compiler.input.1291845688">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.verigy.itee.utm.editor.release.433769594;com.verigy.itee.utm.editor.release.433769594.;com.verigy.itee.utm.editor.tool.cpp.compiler.release.162854734;cdt.managedbuild.tool.gnu.cpp.compiler.input.2098664370">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="refreshScope"/>
+</cproject>

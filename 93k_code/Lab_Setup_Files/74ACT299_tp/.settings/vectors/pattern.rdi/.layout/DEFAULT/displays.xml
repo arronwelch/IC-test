@@ -1,0 +1,19 @@
+<?xml version ='1.0' encoding ='UTF-8'?>
+<displays xmlns:xsi ='http://www.w3.org/2001/XMLSchema-instance'>
+ <signal name ='Vcc (TP)' index ='false'/>
+ <signal name ='CP (DVC)' index ='false'/>
+ <signal name ='DS0 (DVC)' index ='false'/>
+ <signal name ='DS7 (DVC)' index ='false'/>
+ <signal name ='I/O0 (DVC)' index ='false'/>
+ <signal name ='I/O1 (DVC)' index ='false'/>
+ <signal name ='I/O2 (DVC)' index ='false'/>
+ <signal name ='I/O3 (DVC)' index ='false'/>
+ <signal name ='I/O4 (DVC)' index ='false'/>
+ <signal name ='I/O5 (DVC)' index ='false'/>
+ <signal name ='I/O6 (DVC)' index ='false'/>
+ <signal name ='I/O7 (DVC)' index ='false'/>
+ <signal name ='Q0 (DVC)' index ='false'/>
+ <signal name ='Q7 (DVC)' index ='false'/>
+ <signal name ='S0 (DVC)' index ='false'/>
+ <signal name ='S1 (DVC)' index ='false'/>
+</displays>

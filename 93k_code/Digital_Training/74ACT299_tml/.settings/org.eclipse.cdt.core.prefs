@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+environment/project/com.verigy.itee.utm.editor.debug.1685204964/MTP_ROOT/delimiter=;
+environment/project/com.verigy.itee.utm.editor.debug.1685204964/MTP_ROOT/operation=append
+environment/project/com.verigy.itee.utm.editor.debug.1685204964/MTP_ROOT/value=/opt/93000mts/mts/
+environment/project/com.verigy.itee.utm.editor.debug.1685204964/append=true
+environment/project/com.verigy.itee.utm.editor.debug.1685204964/appendContributed=true
+environment/project/com.verigy.itee.utm.editor.release.295538219/MTP_ROOT/delimiter=;
+environment/project/com.verigy.itee.utm.editor.release.295538219/MTP_ROOT/operation=append
+environment/project/com.verigy.itee.utm.editor.release.295538219/MTP_ROOT/value=/opt/93000mts/mts/
+environment/project/com.verigy.itee.utm.editor.release.295538219/append=true
+environment/project/com.verigy.itee.utm.editor.release.295538219/appendContributed=true

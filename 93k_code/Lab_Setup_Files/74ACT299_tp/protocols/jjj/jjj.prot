@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<protocol xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="prot_2.xsd" type='HostInterface' editable='true'>
+
+<executionContext useTimingSpecification='false' useLevelSpecification='false'/>
+
+</protocol>

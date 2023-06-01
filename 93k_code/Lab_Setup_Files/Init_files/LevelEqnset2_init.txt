@@ -1,0 +1,78 @@
+EQNSET 2 "specs"
+
+  SPECS
+    VCC [V]                 # supply voltage
+    VIL [V]                 # low level input voltage
+    VIH [V]                 # high level input voltage
+    VOL [V]                 # low level output voltage
+    VOH [V]                 # high level output voltage
+
+  DPSPINS Vcc
+  vout = VCC
+  vout_frc_rng = 7
+  iout_clamp_rng = 200
+  ilimit = 200
+  t_ms = 4
+  offcurr = act
+
+#####################################################
+
+  LEVELSET 1 "no termination"
+
+    PINS ctrl ser_in
+      vil = VIL
+      vih = VIH
+
+    PINS ser_out
+      vol = VOL
+      voh = VOH
+
+    PINS io_pins
+      vil = VIL
+      vih = VIH
+      vol = VOL
+      voh = VOH
+
+#####################################################
+
+  LEVELSET 2 "with termination"
+
+    PINS ctrl ser_in
+      vil = VIL
+      vih = VIH
+
+    PINS ser_out
+      vol = VOL
+      voh = VOH
+      vt  = (VOH + VOL) / 2 # V; enable termination, define level
+
+    PINS io_pins
+      vil = VIL
+      vih = VIH
+      vol = VOL
+      voh = VOH
+      vt  = (VOH + VOL) / 2 # V
+
+#####################################################
+
+  LEVELSET 3 "with active load"
+
+    PINS ctrl ser_in
+      vil = VIL
+      vih = VIH
+
+    PINS ser_out
+      vol = VOL
+      voh = VOH
+      vt  = (VOH + VOL) / 2
+      iol = 24              # mA; enable active load, define load current for low output level
+      ioh = 24              # mA; enable active load, define load current for high output level
+
+    PINS io_pins
+      vil = VIL
+      vih = VIH
+      vol = VOL
+      voh = VOH
+      vt  = (VOH + VOL) / 2
+      iol = 24              # mA
+      ioh = 24              # mA

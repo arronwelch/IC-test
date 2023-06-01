@@ -1,0 +1,22 @@
+    format definition file
+$show_free_res_col=n
+$show_wf_numbers=n
+$show_prev_next_dc=n
+$show_same_dc_for_all_pins=y
+$global_DC_names=,,
+CP,p,,,
+DS7,p,,,
+DS0,p,,,
+S1,p,,,
+S0,p,,,
+_MR,p,,,
+Q7,p,,,
+Q0,p,,,
+I/O7,p,,,
+I/O6,p,,,
+I/O5,p,,,
+I/O4,p,,,
+I/O3,p,,,
+I/O2,p,,,
+I/O1,p,,,
+I/O0,p,,,
