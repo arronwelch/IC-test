@@ -87,6 +87,9 @@ tm_4:
   "stopCycVecHigh" = "0";
   "testName" = "(passCurrentLow_uA,passCurrentHigh_uA)";
   "output" = "ReportUI";
+tm_6:
+  "Measure Pins" = "I_O5,I_O3,I_O1";
+  "Current Force(mA)" = "-24";
 end
 -----------------------------------------------------------------
 testmethodlimits
@@ -108,6 +111,12 @@ tm_4:
   testmethod_class = "dc_tml.DcTest.Leakage";
 tm_5:
   testmethod_class = "74ACT299_tml.Functional";
+tm_6:
+  testmethod_class = "74ACT299_tml.OutputDC";
+tm_7:
+  testmethod_class = "74ACT299_tml.DPS_Meas_Task";
+tm_8:
+  testmethod_class = "74ACT299_tml.DPS_Meas_Task_Gen";
 end
 -----------------------------------------------------------------
 test_suites
@@ -137,6 +146,32 @@ Leakage:
 local_flags  = output_on_pass, output_on_fail, value_on_pass, value_on_fail, per_pin_on_pass, per_pin_on_fail;
  site_match = 2;
  site_control = "parallel:";
+TM_DPS_Meas_Task:
+  override = 1;
+ override_tim_equ_set = 1;
+ override_lev_equ_set = 2;
+ override_tim_spec_set = 1;
+ override_lev_spec_set = 1;
+ override_timset = 1;
+ override_levset = 1;
+ override_seqlbl = "gross_func";
+ override_testf = tm_7;
+local_flags  = output_on_pass, output_on_fail, value_on_pass, value_on_fail, per_pin_on_pass, per_pin_on_fail;
+ site_match = 2;
+ site_control = "parallel:";
+TM_DPS_Meas_Task_Gen:
+  override = 1;
+ override_tim_equ_set = 1;
+ override_lev_equ_set = 2;
+ override_tim_spec_set = 1;
+ override_lev_spec_set = 1;
+ override_timset = 1;
+ override_levset = 1;
+ override_seqlbl = "gross_func";
+ override_testf = tm_8;
+local_flags  = output_on_pass, output_on_fail, value_on_pass, value_on_fail, per_pin_on_pass, per_pin_on_fail;
+ site_match = 2;
+ site_control = "parallel:";
 TM_Gross_Funct:
   override = 1;
  override_tim_equ_set = 1;
@@ -150,7 +185,7 @@ TM_Gross_Funct:
 local_flags  = output_on_pass, output_on_fail, value_on_pass, value_on_fail, per_pin_on_pass, per_pin_on_fail;
  site_match = 2;
  site_control = "parallel:";
-gross_func:
+TM_Output_DC:
   override = 1;
  override_tim_equ_set = 1;
  override_lev_equ_set = 2;
@@ -159,6 +194,19 @@ gross_func:
  override_timset = 1;
  override_levset = 1;
  override_seqlbl = "gross_func";
+ override_testf = tm_6;
+local_flags  = output_on_pass, output_on_fail, value_on_pass, value_on_fail, per_pin_on_pass, per_pin_on_fail;
+ site_match = 2;
+ site_control = "parallel:";
+gross_func:
+  override = 1;
+ override_tim_equ_set = 1;
+ override_lev_equ_set = 2;
+ override_tim_spec_set = 1;
+ override_lev_spec_set = 2;
+ override_timset = 1;
+ override_levset = 1;
+ override_seqlbl = "gross_func_Fail";
  override_testf = tm_1;
 local_flags  = output_on_pass, output_on_fail, value_on_pass, value_on_fail, per_pin_on_pass, per_pin_on_fail;
  site_match = 2;
@@ -199,6 +247,30 @@ test_flow
  {
     multi_bin;
  }
+ run_and_branch(TM_Output_DC)
+ then
+ {
+ }
+ else
+ {
+    multi_bin;
+ }
+ run_and_branch(TM_DPS_Meas_Task)
+ then
+ {
+ }
+ else
+ {
+    multi_bin;
+ }
+ run_and_branch(TM_DPS_Meas_Task_Gen)
+ then
+ {
+ }
+ else
+ {
+    multi_bin;
+ }
  stop_bin "1", "Pass", , good, noreprobe, green, 1, over_on;
 end
 -----------------------------------------------------------------
@@ -209,8 +281,8 @@ end
 context
 
 context_config_file = "74ACT299_Incorruptus_CSDPS";
-context_levels_file = "levels";
-context_timing_file = "timing";
+context_levels_file = "levels.rdi";
+context_timing_file = "timing.rdi";
 context_vector_file = "all.binl";
 context_channel_attrib_file = "ChannelAttribute.soc";
 context_testtable_file = "ttable.csv";

@@ -106,6 +106,8 @@ tm_2:
   testmethod_class = "dc_tml.DcTest.Continuity";
 tm_4:
   testmethod_class = "dc_tml.DcTest.Leakage";
+tm_5:
+  testmethod_class = "74ACT299_tml.Functional";
 end
 -----------------------------------------------------------------
 test_suites
@@ -132,6 +134,19 @@ Leakage:
  override_levset = 1;
  override_seqlbl = "gross_func_leak";
  override_testf = tm_4;
+local_flags  = output_on_pass, output_on_fail, value_on_pass, value_on_fail, per_pin_on_pass, per_pin_on_fail;
+ site_match = 2;
+ site_control = "parallel:";
+TM_Gross_Funct:
+  override = 1;
+ override_tim_equ_set = 1;
+ override_lev_equ_set = 2;
+ override_tim_spec_set = 1;
+ override_lev_spec_set = 2;
+ override_timset = 1;
+ override_levset = 1;
+ override_seqlbl = "gross_func";
+ override_testf = tm_5;
 local_flags  = output_on_pass, output_on_fail, value_on_pass, value_on_fail, per_pin_on_pass, per_pin_on_fail;
  site_match = 2;
  site_control = "parallel:";
@@ -169,6 +184,14 @@ test_flow
     multi_bin;
  }
  run_and_branch(Leakage)
+ then
+ {
+ }
+ else
+ {
+    multi_bin;
+ }
+ run_and_branch(TM_Gross_Funct)
  then
  {
  }

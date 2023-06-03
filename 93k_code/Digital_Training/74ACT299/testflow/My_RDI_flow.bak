@@ -55,9 +55,6 @@ multibin_mode = 0;
 end
 -----------------------------------------------------------------
 testmethodparameters
-tm_1:
-  "testName" = "Functional";
-  "output" = "None";
 tm_2:
   "pinlist" = "@";
   "testCurrent" = "-80[uA]";
@@ -67,51 +64,20 @@ tm_2:
   "prechargeToZeroVol" = "ON";
   "testName" = "passVolt_mV";
   "output" = "ReportUI";
-tm_4:
-  "pinlist" = "@";
-  "measure" = "BOTH";
-  "measureMode" = "PPMUpar";
-  "relaySwitchMode" = "DEFAULT(BBM)";
-  "forceVoltageLow" = "400[mV]";
-  "forceVoltageHigh" = "4300[mV]";
-  "spmuClampCurrentLow" = "0[uA]";
-  "spmuClampCurrentHigh" = "0[uA]";
-  "ppmuPreCharge" = "ON";
-  "prechargeVoltageLow" = "0[mV]";
-  "prechargeVoltageHigh" = "0[mV]";
-  "settlingTimeLow" = "2[ms]";
-  "settlingTimeHigh" = "2[ms]";
-  "preFunction" = "ALL";
-  "controlTestNumOfFunctional" = "NO";
-  "stopCycVecLow" = "0";
-  "stopCycVecHigh" = "0";
-  "testName" = "(passCurrentLow_uA,passCurrentHigh_uA)";
-  "output" = "ReportUI";
 end
 -----------------------------------------------------------------
 testmethodlimits
-tm_1:
-  "Functional" = "":"NA":"":"NA":"":"":"";
 tm_2:
   "passVolt_mV" = "200":"GE":"800":"LE":"":"":"0";
-tm_4:
-  "passCurrentLow_uA" = "":"NA":"":"NA":"":"":"";
-  "passCurrentHigh_uA" = "":"NA":"":"NA":"":"":"";
 end
 -----------------------------------------------------------------
 testmethods
-tm_1:
-  testmethod_class = "ac_tml.AcTest.FunctionalTest";
 tm_2:
   testmethod_class = "dc_tml.DcTest.Continuity";
-tm_4:
-  testmethod_class = "dc_tml.DcTest.Leakage";
-tm_5:
-  testmethod_class = "74ACT299_tml.Functional";
 end
 -----------------------------------------------------------------
 test_suites
-Continuity:
+RDI_Functional:
   override = 1;
  override_tim_equ_set = 1;
  override_lev_equ_set = 2;
@@ -124,74 +90,11 @@ Continuity:
 local_flags  = output_on_pass, output_on_fail, value_on_pass, value_on_fail, per_pin_on_pass, per_pin_on_fail;
  site_match = 2;
  site_control = "parallel:";
-Leakage:
-  override = 1;
- override_tim_equ_set = 1;
- override_lev_equ_set = 2;
- override_tim_spec_set = 1;
- override_lev_spec_set = 1;
- override_timset = 1;
- override_levset = 1;
- override_seqlbl = "gross_func_leak";
- override_testf = tm_4;
-local_flags  = output_on_pass, output_on_fail, value_on_pass, value_on_fail, per_pin_on_pass, per_pin_on_fail;
- site_match = 2;
- site_control = "parallel:";
-TM_Gross_Funct:
-  override = 1;
- override_tim_equ_set = 1;
- override_lev_equ_set = 2;
- override_tim_spec_set = 1;
- override_lev_spec_set = 2;
- override_timset = 1;
- override_levset = 1;
- override_seqlbl = "gross_func";
- override_testf = tm_5;
-local_flags  = output_on_pass, output_on_fail, value_on_pass, value_on_fail, per_pin_on_pass, per_pin_on_fail;
- site_match = 2;
- site_control = "parallel:";
-gross_func:
-  override = 1;
- override_tim_equ_set = 1;
- override_lev_equ_set = 2;
- override_tim_spec_set = 1;
- override_lev_spec_set = 2;
- override_timset = 1;
- override_levset = 1;
- override_seqlbl = "gross_func";
- override_testf = tm_1;
-local_flags  = output_on_pass, output_on_fail, value_on_pass, value_on_fail, per_pin_on_pass, per_pin_on_fail;
- site_match = 2;
- site_control = "parallel:";
 end
 -----------------------------------------------------------------
 test_flow
 
- run_and_branch(Continuity)
- then
- {
- }
- else
- {
-    multi_bin;
- }
- run_and_branch(gross_func)
- then
- {
- }
- else
- {
-    multi_bin;
- }
- run_and_branch(Leakage)
- then
- {
- }
- else
- {
-    multi_bin;
- }
- run_and_branch(TM_Gross_Funct)
+ run_and_branch(RDI_Functional)
  then
  {
  }
@@ -209,9 +112,9 @@ end
 context
 
 context_config_file = "74ACT299_Incorruptus_CSDPS";
-context_levels_file = "levels";
-context_timing_file = "timing";
-context_vector_file = "all.binl";
+context_levels_file = "levels.rdi";
+context_timing_file = "timing.rdi";
+context_vector_file = "pattern.rdi";
 context_channel_attrib_file = "ChannelAttribute.soc";
 context_testtable_file = "ttable.csv";
 end
