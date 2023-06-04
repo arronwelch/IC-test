@@ -4,12 +4,15 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../PMU_Meas.cpp \
 ../gross_func_rdi.cpp 
 
 OBJS += \
+./PMU_Meas.o \
 ./gross_func_rdi.o 
 
 CPP_DEPS += \
+./PMU_Meas.d \
 ./gross_func_rdi.d 
 
 

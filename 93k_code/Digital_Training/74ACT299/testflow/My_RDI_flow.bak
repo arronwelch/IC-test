@@ -55,25 +55,14 @@ multibin_mode = 0;
 end
 -----------------------------------------------------------------
 testmethodparameters
-tm_2:
-  "pinlist" = "@";
-  "testCurrent" = "-80[uA]";
-  "settlingTime" = "4[ms]";
-  "measurementMode" = "PPMUpar";
-  "polarity" = "BPOL";
-  "prechargeToZeroVol" = "ON";
-  "testName" = "passVolt_mV";
-  "output" = "ReportUI";
 end
 -----------------------------------------------------------------
 testmethodlimits
-tm_2:
-  "passVolt_mV" = "200":"GE":"800":"LE":"":"":"0";
 end
 -----------------------------------------------------------------
 testmethods
-tm_2:
-  testmethod_class = "dc_tml.DcTest.Continuity";
+tm_1:
+  testmethod_class = "74ACT299_RDI_tml.gross_func_rdi";
 end
 -----------------------------------------------------------------
 test_suites
@@ -85,8 +74,7 @@ RDI_Functional:
  override_lev_spec_set = 2;
  override_timset = 1;
  override_levset = 1;
- override_seqlbl = "gross_func";
- override_testf = tm_2;
+ override_testf = tm_1;
 local_flags  = output_on_pass, output_on_fail, value_on_pass, value_on_fail, per_pin_on_pass, per_pin_on_fail;
  site_match = 2;
  site_control = "parallel:";
@@ -100,7 +88,7 @@ test_flow
  }
  else
  {
-    multi_bin;
+    stop_bin "2", "", , bad, noreprobe, red, 2, over_on;
  }
  stop_bin "1", "Pass", , good, noreprobe, green, 1, over_on;
 end
