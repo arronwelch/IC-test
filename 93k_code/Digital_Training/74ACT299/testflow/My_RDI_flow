@@ -65,10 +65,24 @@ tm_1:
   testmethod_class = "74ACT299_RDI_tml.gross_func_rdi";
 tm_3:
   testmethod_class = "74ACT299_RDI_tml.PMU_Meas";
+tm_4:
+  testmethod_class = "74ACT299_RDI_tml.func_Idd_burst_meas";
 end
 -----------------------------------------------------------------
 test_suites
-DC_Measures:
+DC_Idd_RDI:
+  override = 1;
+ override_tim_equ_set = 1;
+ override_lev_equ_set = 2;
+ override_tim_spec_set = 1;
+ override_lev_spec_set = 2;
+ override_timset = 1;
+ override_levset = 1;
+ override_testf = tm_4;
+local_flags  = output_on_pass, output_on_fail, value_on_pass, value_on_fail, per_pin_on_pass, per_pin_on_fail;
+ site_match = 2;
+ site_control = "parallel:";
+DC_Measures_RDI:
   override = 1;
  override_tim_equ_set = 1;
  override_lev_equ_set = 2;
@@ -104,7 +118,15 @@ test_flow
  {
     stop_bin "2", "", , bad, noreprobe, red, 2, over_on;
  }
- run_and_branch(DC_Measures)
+ run_and_branch(DC_Measures_RDI)
+ then
+ {
+ }
+ else
+ {
+    stop_bin "2", "", , bad, noreprobe, red, 2, over_on;
+ }
+ run_and_branch(DC_Idd_RDI)
  then
  {
  }
